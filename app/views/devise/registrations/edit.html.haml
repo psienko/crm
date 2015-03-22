@@ -1,7 +1,7 @@
 .authform
   %h3
     Edit #{resource_name.to_s.humanize}
-  = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f|
+  = form_for(resource, :as => resource_name, :url =>  employee_registration_path(resource_name, format: :html), :html => { :method => :put, :role => 'form'}) do |f|
     = devise_error_messages!
     .form-group
       = image_tag current_employee.avatar_path, alt: 'avatar', class:'img-responsive img-rounded', size: '150x200'
@@ -30,7 +30,3 @@
         = f.label :current_password
         = f.password_field :current_password, class: 'form-control'
     = f.submit 'Update', :class => 'button right'
-.authform
-  %h3 Cancel Account
-  %p Unhappy? We'll be sad to see you go.
-  = button_to "Cancel my account", registration_path(resource_name), :data => { :confirm => "Are you sure?" }, :method => :delete, :class => 'button right'

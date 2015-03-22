@@ -5,6 +5,10 @@ class ApplicationController < ActionController::Base
   protect_from_forgery with: :exception
   layout :layout_by_resource
 
+  def current_employee
+    EmployeeDecorator.decorate(super) unless super.nil?
+  end
+
   protected
   
   def configure_permitted_parameters

@@ -27,6 +27,8 @@ gem 'bootstrap-sass'
 gem 'rails_layout'
 gem "haml-rails", "~> 0.9"
 
+gem 'draper', '~> 1.3'
+
 # authorization
 gem 'devise'
 gem 'carrierwave'

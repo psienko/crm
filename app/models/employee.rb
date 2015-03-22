@@ -8,7 +8,9 @@ class Employee < ActiveRecord::Base
 
   def avatar_path(option = nil)
     return avatar.url(option) if avatar.present?
+    return '/uploads/user/avatar/default_avatar_thumb.gif' if option == :thumb
     '/uploads/user/avatar/default_avatar.gif'
+
   end
 
   def send_devise_notification(notification, *args)
