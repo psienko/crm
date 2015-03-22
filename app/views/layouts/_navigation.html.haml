@@ -1,14 +1,16 @@
 -# navigation styled for Bootstrap 3.0
-%nav.navbar.navbar-inverse.navbar-fixed-top
-  .container-fluid
-    .navbar-header
-      %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
-        %span.sr-only Toggle navigation
-        %span.icon-bar
-        %span.icon-bar
-        %span.icon-bar
-      %h4
-        = link_to 'CRM', root_path, class: 'navbar-brand'
-    .collapse.navbar-collapse.navbar-right
-      %ul.nav.navbar-nav
-        = render 'layouts/navigation_links'
+.row
+  .col-md-12
+    %nav.navbar.navbar-inverse.navbar-fixed-top
+      .container-fluid
+        .navbar-header
+          %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
+            %span.sr-only Toggle navigation
+            %span.icon-bar
+            %span.icon-bar
+            %span.icon-bar
+          %h4
+            = link_to 'CRM', root_path, class: 'navbar-brand'
+        .collapse.navbar-collapse.navbar-right
+          %ul.nav.navbar-nav
+            = render 'layouts/navigation_links'

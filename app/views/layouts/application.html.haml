@@ -10,11 +10,14 @@
   %body
     %header
       = render 'layouts/navigation'
-    %main{role: "main"}
+    %main{role: "main", class: 'application-main'}
       .container-fluid
         .row
           .col-lg-12
             = render 'layouts/messages'
+        .row
+          .col-md-12       
+            = render 'layouts/navigation_tabs'
         .row
           .col-lg-12
             = yield

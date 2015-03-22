@@ -21,7 +21,7 @@ class ApplicationController < ActionController::Base
   def layout_by_resource
     return 'application' if controller_name == 'registrations' &&
                            (action_name == 'edit' || action_name == 'update')
-    return 'home' if devise_controller? || controller_name == 'home'
+    return 'home' if devise_controller?
     'application'
   end
 end

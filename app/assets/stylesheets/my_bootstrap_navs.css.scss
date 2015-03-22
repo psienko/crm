@@ -1,0 +1,60 @@
+//== Colors
+//
+//## Gray and brand colors for use across Bootstrap.
+$gray-base: #000 !default;
+$gray-darker: lighten($gray-base, 13.5%) !default; // #222
+$gray-dark: lighten($gray-base, 20%) !default; // #333
+$gray: lighten($gray-base, 33.5%) !default; // #555
+$gray-light: lighten($gray-base, 46.7%) !default; // #777
+$gray-lighter: lighten($gray-base, 93.5%) !default; // #eee
+
+$body-bg: #fff !default;
+$line-height-base: 1.428571429 !default; // 20/14
+$border-radius-base: 4px !default;
+
+//== Tabs
+$nav-tabs-border-color: #ddd !default;
+$nav-tabs-link-hover-border-color: $gray-lighter !default;
+$nav-tabs-active-link-hover-bg: $gray-dark !default;
+$nav-tabs-active-link-hover-color: white !default;
+$nav-tabs-active-link-hover-border-color: #ddd !default;
+$nav-tabs-justified-link-border-color: #ddd !default;
+$nav-tabs-justified-active-link-border-color: $body-bg !default;
+
+// Tabs
+// -------------------------
+// Give the tabs something to sit on
+.nav-tabs {
+  border-bottom: 1px solid $nav-tabs-border-color;
+  > li {
+    float: left;
+    // Make the list-items overlay the bottom border
+    margin-bottom: -1px;
+    // Actual tabs (as links)
+      > a {
+        color: $gray-dark;
+        margin-right: 2px;
+        line-height: $line-height-base;
+        border: 1px solid transparent;
+        border-radius: $border-radius-base $border-radius-base 0 0;
+        &:hover {
+          border-color: $nav-tabs-link-hover-border-color $nav-tabs-link-hover-border-color $nav-tabs-border-color;
+        }
+      }
+
+      // Active state, and its :hover to override normal :hover
+      &.active > a {
+        &,
+        &:hover,
+        &:focus {
+          color: $nav-tabs-active-link-hover-color;
+          background-color: $nav-tabs-active-link-hover-bg;
+          border: 1px solid $nav-tabs-active-link-hover-border-color;
+          border-bottom-color: transparent;
+          cursor: default;
+        }
+      }
+  }
+}
+
+
