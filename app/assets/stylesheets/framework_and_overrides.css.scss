@@ -2,6 +2,14 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
+//colors
+$white: #fff;
+$dark-gray: #555;
+$mercury: #e5e5e5;
+$black_5: rgba(0,0,0,.05);
+$black: #000000;
+$bright-black: #282828;
+
 // make all images responsive by default
 img {
   @extend .img-responsive;
@@ -79,4 +87,25 @@ section {
   @extend .btn;
   @extend .btn-primary;
   @extend .btn-xs;
+}
+
+.box {
+    margin-top: 57px;
+    bottom: 0; /* increase for footer use */
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    background-image: url("/images/background-business2.jpg");
+    background-size:cover;
+    background-attachment:fixed;
+}
+
+.btn-black {
+  color: $white;
+  background-color: $bright-black;
+  &:hover {
+    color: $white;
+    background-color: $black;
+  }
 }

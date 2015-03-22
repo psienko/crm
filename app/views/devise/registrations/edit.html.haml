@@ -4,6 +4,13 @@
   = form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :role => 'form'}) do |f|
     = devise_error_messages!
     .form-group
+      = image_tag current_employee.avatar_path, alt: 'avatar', class:'img-responsive img-rounded', size: '150x200'
+      - if current_employee.avatar.url.present?
+        = f.label :remove_avatar 
+        = f.check_box :remove_avatar 
+      = f.file_field :avatar  
+      = f.hidden_field :avatar_cache
+    .form-group
       = f.label :email
       = f.email_field :email, :autofocus => true, class: 'form-control'
       - if devise_mapping.confirmable? && resource.pending_reconfirmation?
