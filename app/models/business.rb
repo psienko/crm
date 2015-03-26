@@ -1,3 +1,3 @@
 class Business < ActiveRecord::
-  has_many :customers, as: :customerable
+  has_one :customers, as: :customerable
 end

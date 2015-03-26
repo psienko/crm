@@ -1,3 +1,3 @@
 class Person < ActiveRecord::Base
-  has_many :customers, as: :customerable
+  has_one :customers, as: :customerable
 end
