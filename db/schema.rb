@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150326101257) do
+ActiveRecord::Schema.define(version: 20150330110833) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -27,6 +27,30 @@ ActiveRecord::Schema.define(version: 20150326101257) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
+
+  create_table "contracts", force: :cascade do |t|
+    t.string   "contract_number"
+    t.text     "content"
+    t.float    "total_value"
+    t.float    "additional_costs"
+    t.float    "monthly_value"
+    t.integer  "customer_id"
+    t.datetime "date_of_signature"
+    t.datetime "date_of_start"
+    t.datetime "date_of_end"
+    t.datetime "created_at",        null: false
+    t.datetime "updated_at",        null: false
+  end
+
+  add_index "contracts", ["customer_id"], name: "index_contracts_on_customer_id", using: :btree
+
+  create_table "contracts_products", id: false, force: :cascade do |t|
+    t.integer "contract_id"
+    t.integer "product_id"
+  end
+
+  add_index "contracts_products", ["contract_id"], name: "index_contracts_products_on_contract_id", using: :btree
+  add_index "contracts_products", ["product_id"], name: "index_contracts_products_on_product_id", using: :btree
 
   create_table "customers", force: :cascade do |t|
     t.integer  "customerable_id"
@@ -72,4 +96,14 @@ ActiveRecord::Schema.define(version: 20150326101257) do
     t.datetime "updated_at",    null: false
   end
 
+  create_table "products", force: :cascade do |t|
+    t.string   "name"
+    t.float    "prize"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "contracts", "customers"
+  add_foreign_key "contracts_products", "contracts"
+  add_foreign_key "contracts_products", "products"
 end
