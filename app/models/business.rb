@@ -1,4 +1,4 @@
-class Business < ActiveRecord::
+class Business < ActiveRecord::Base
   has_one :customer, as: :customerable
   after_create :create_customer
 

@@ -2,6 +2,7 @@ source 'https://rubygems.org'
 
 gem 'rails', '4.2.0'
 gem 'pg'
+gem 'puma'
 gem 'sass-rails', '~> 5.0'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.1.0'
@@ -23,6 +24,11 @@ gem 'draper', '~> 1.3'
 gem 'devise'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'faker'
+gem 'rpg' # pesel generator
+gem 'responders', '~> 2.0'
+gem 'decent_exposure'
+gem 'decent_decoration'
 
 
 
