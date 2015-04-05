@@ -30,6 +30,10 @@ gem 'responders', '~> 2.0'
 gem 'decent_exposure'
 gem 'decent_decoration'
 
+gem 'ember-rails'
+gem 'ember-source', '~> 1.9.0'
+gem 'emblem-rails'
+
 
 
 group :development, :test do

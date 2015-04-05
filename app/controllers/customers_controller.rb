@@ -6,21 +6,25 @@ class CustomersController < ApplicationController
   expose(:customer)
 
   def index
-    #respond_with Customer.all
+    respond_with customers
   end
 
   def show
-    #respond_with customer
+    respond_with customer
   end
 
   def create
     respond_with case params[:customer_type]
-                 when 'business' then Business.create(business_params)
+                 when 'business' then Customer.create(customerable: Business.create(business_params))
                  when 'person' then  People.create(person_params)
                  end
   end
 
   def update
+    respond_with case params[:customer_type]
+                 when 'business' then Business.create(business_params)
+                 when 'person' then  People.create(person_params)
+                 end
     respond_with customer.update(customer_params)
   end
 
