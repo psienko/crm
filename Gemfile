@@ -33,6 +33,7 @@ gem 'decent_decoration'
 gem 'ember-rails'
 gem 'ember-source', '~> 1.9.0'
 gem 'emblem-rails'
+gem 'active_model_serializers', '~> 0.8.3'
 
 
 
