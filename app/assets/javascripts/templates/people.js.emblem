@@ -1,0 +1,22 @@
+.row
+  .col-md-12
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title Klienci indywidualni
+      .panel-body
+      table.table.table-condensed
+        thead
+          tr
+            th Imię
+            th Nazwisko
+            th Pesel
+            th Email
+            th
+        tbody
+          each person in controller
+            tr
+              td = person.firstname
+              td = person.lastname
+              td = person.pesel
+              td = person.email
+      .panel-footer

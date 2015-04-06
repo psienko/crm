@@ -1,5 +1,6 @@
 # Override the default adapter with the `DS.ActiveModelAdapter` which
 
-App.ApplicationAdapter = DS.ActiveModelAdapter.extend({
+DS.RESTAdapter.reopen
+  namespace: 'api'
 
-})
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend()

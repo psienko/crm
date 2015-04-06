@@ -1,5 +1,5 @@
 class Person < ActiveRecord::Base
-  has_one :customer, as: :customerable
+  has_one :customer, as: :customerable, dependent: :destroy
   after_create :create_customer
 
   private
