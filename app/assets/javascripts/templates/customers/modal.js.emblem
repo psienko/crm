@@ -1,0 +1,7 @@
+.modal.in
+  .modal-header
+  .modal-body
+    h1 | BODY
+  .modal-footer
+    button {action close} Cancel
+    

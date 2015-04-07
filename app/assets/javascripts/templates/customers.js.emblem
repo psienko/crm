@@ -1,4 +1,10 @@
 .row
+  .col-md-4
+    button{action edit} edit
+    button.btn.btn-warning{action 'showModal' 'settings-modal' model.[1]} settings
+    button.btn.btn-black{action 'showModal' 'logout-modal'} logout
+
+.row
   .col-md-12       
     ul.nav.nav-tabs.nav-justified
       li role="presentation"

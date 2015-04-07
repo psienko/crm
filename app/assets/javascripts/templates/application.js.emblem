@@ -51,3 +51,5 @@
 .row
   .col-lg-12
     = outlet
+
+= outlet 'modal'

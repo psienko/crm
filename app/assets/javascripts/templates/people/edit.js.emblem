@@ -1,0 +1,46 @@
+my-modal title='Settings' ok='save' close='removeModal'
+  form submit='ok'
+    .panel.panel-default
+      .panel-heading
+        strong Dane osobowe
+      .panel-body
+        .form-group
+          label Imię
+          ' 
+          view Ember.TextField value=model.firstname class=form-controll
+        .form-group
+          label Nazwisko
+          ' 
+          view Ember.TextField value=model.lastname class=form-controll
+        .form-group
+          label PESEL
+          ' 
+          view Ember.TextField value=model.pesel class=form-controll
+        .form-group
+          label Data urodzenia
+          ' 
+          view Ember.TextField value=model.dateOfBirth class=form-controll
+
+    
+    fieldset
+      dl
+        dt: label First Name:
+        dd: view Ember.TextField value=model.firstName
+
+      dl
+        dt: label Last Name:
+        dd: view Ember.TextField value=model.lastName
+
+      dl
+        dt: label Email:
+        dd: view Ember.TextField value=model.email
+
+      dl
+        dt: label Phone:
+        dd: view Ember.TextField value=model.phone
+
+    fieldset.actions
+      input type='submit' value='Save Changes' click="saveChanges"
+      a.cancel href="#" click="cancel" cancel        
+
+      

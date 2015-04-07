@@ -1,0 +1,5 @@
+my-modal title='Settings' ok='save' close='removeModal'
+  form action 'ok' on='submit' target=view
+    .form-group
+      
+    

@@ -19,4 +19,20 @@
               td = person.lastname
               td = person.pesel
               td = person.email
+              td 
+                link-to 'people' class="btn btn-sm btn-primary" 
+                  | Szczegóły
+                  '
+                  i.fa.fa-eye
+                '
+                button.btn.btn-sm.btn-default{action 'showModal' 'people.edit' person} 
+                  | Edytuj
+                  '
+                  i.fa.fa-pencil-square-o
+                '
+                link-to 'people' class="btn btn-sm btn-black"
+                  | Dodaj umowę
+                  '
+                  i.fa.fa-file
       .panel-footer
+
