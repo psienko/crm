@@ -6,4 +6,8 @@ class PersonSerializer < ActiveModel::Serializer
   def customerable
     object.customerable.map { |e| { id: e.id, type: e.type } }
   end
+
+  def date_of_birth
+    object.date_of_birth.strftime("%m/%d/%Y") if object.date_of_birth.present?
+  end
 end

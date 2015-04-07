@@ -7,5 +7,11 @@ App.Person = App.Customerable.extend({
   city: DS.attr('string'),
   address: DS.attr('string'),
   postcode: DS.attr('string'),
-  dateOfBirth: DS.attr('date')
+  dateOfBirth: DS.attr('date'),
+
+  formattedDate: ( ->
+    moment(@get('dateOfBirth')).format 'DD/MM/YYYY'
+  ).property('dateOfBirth')
 });
+
+

@@ -4,6 +4,8 @@
 #= require handlebars
 #= require ember
 #= require ember-data
+#= require bootstrap-datepicker
+#= require moment
 #= require_self
 #= require app
 
