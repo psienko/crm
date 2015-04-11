@@ -14,7 +14,7 @@
           i.fa.fa-user-secret.fa-user
 
       li role="presentation"
-        link-to 'customers'
+        link-to 'people'
           |Klienci
           '
           i.fa.fa-users
@@ -50,6 +50,8 @@
           i.fa.fa-briefcase
 .row
   .col-lg-12
+    br
+    br
     = outlet
 
 = outlet 'modal'

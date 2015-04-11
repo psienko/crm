@@ -1,10 +1,4 @@
 .row
-  .col-md-4
-    button{action edit} edit
-    button.btn.btn-warning{action 'showModal' 'settings-modal' model.[1]} settings
-    button.btn.btn-black{action 'showModal' 'logout-modal'} logout
-
-.row
   .col-md-12       
     ul.nav.nav-tabs.nav-justified
       li role="presentation"
@@ -19,23 +13,6 @@
           '
           i.fa.fa.users.fa-bank
 
-br
-.row
-  .col-md-6
-    .panel.panel-inverse
-      .panel-heading
-        %h1.panel-title Nowy klient indywidualny
-      .panel-body
-        %h3 nic
-      .panel-footer
-
-  .col-md-6
-    .panel.panel-inverse
-      .panel-heading
-        %h1.panel-title Nowa firma
-      .panel-body
-        %h3 nic
-      .panel-footer
-
+    br
   = outlet
   

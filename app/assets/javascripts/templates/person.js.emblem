@@ -1,0 +1,9 @@
+.row
+  .col-md-5
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-info-circle   
+      .panel-body
+        model.firstname
+      .panel-footer

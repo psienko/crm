@@ -10,4 +10,5 @@ App.Router.reopen
 App.Router.map ->
   @resource 'customers', path: '/customers', ->
     @resource 'businesses', path: '/businesses'
-    @resource 'people', path: '/people'
+    @resource 'people', path: '/people', ->
+      @resource 'person', path: '/:id'

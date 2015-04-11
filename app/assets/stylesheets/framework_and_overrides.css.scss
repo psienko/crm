@@ -125,3 +125,24 @@ img {
   margin-top: 62px;
   background-color: white;
 }
+
+btn-transparent {
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+
+btn-icon {
+  font-size: 40px;
+}
+
+more-margin-bottom {
+  margin-bottom: 20px !important;
+}
+
+.n {
+  float: right;
+}

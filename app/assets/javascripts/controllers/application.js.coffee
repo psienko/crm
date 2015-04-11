@@ -5,4 +5,10 @@ App.ApplicationController = Ember.Controller.extend(
     date = @get('date')
     format = @get('format')
     moment(date).format format
-  ).property('date', 'format'))
+  ).property('date', 'format')
+
+  updateCurrentPath: (->
+    App.set 'currentPath', @get('currentPath')
+    return
+  ).observes('currentPath')
+)
