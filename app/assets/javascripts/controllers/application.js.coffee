@@ -1,4 +1,5 @@
 App.ApplicationController = Ember.Controller.extend(
+  needs:['person']
   format: 'DD/MM/YYY'
   date: null
   formattedDate: (->

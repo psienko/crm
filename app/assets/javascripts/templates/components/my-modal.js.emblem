@@ -1,6 +1,6 @@
 .modal.fade
-  .modal-dialog
-    .modal-content
+  .modal-dialog.modal-large 
+    .modal-content.modal-inverse
       .modal-header
         button.close data-dismiss="modal" aria-hidden="true" &times;
         h4.modal-title
@@ -9,4 +9,5 @@
         =yield
       .modal-footer
         button.btn.btn-default type="button" data-dismiss="modal" Close
-        button.btn.btn-primary{action 'ok'} OK
+        button.btn.btn-black{action 'ok'} 
+          submitText

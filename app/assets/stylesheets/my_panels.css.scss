@@ -37,3 +37,14 @@ $panel-inverse-heading-bg: $brand-inverse !default;
     border-color: #2E2E2E;
   }
 }
+
+.modal-inverse{
+  .modal-header{
+    background-color: #2E2E2E;
+    border-color: #2E2E2E;
+    color: white;
+  }
+  button.close{
+    color: white;
+  }
+}

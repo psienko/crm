@@ -15,14 +15,12 @@ unless hideIndex
                 b.fa.fa-plus-square
                 '
                 | Nowy klient
+                
                 button.btn.btn-black.btn-transparent.pull-right{action "changeVisibilityNewForm"} 
                   i.fa.fa-caret-square-o-down.fa-1x
-          
-        if showNewForm    
-          .panel-body
-            form submit='ok' role="form"
-              partial 'people/form'    
-        .panel-footer
+        
+        div class=showNewForm
+          outlet 'newCustomer'
 
     .col-md-6
       .panel.panel-inverse
@@ -37,11 +35,9 @@ unless hideIndex
                 button.btn.btn-black.btn-transparent.pull-right{action "changeVisibilitySearchForm"} 
                   i.fa.fa-caret-square-o-down
                 
-        if showSearchForm
-          .panel-body
-            form submit='ok' role="form"
-              partial 'people/form'
-        .panel-footer
+      div class=showSearchForm
+        outlet 'searchCustomer' 
+       
 
   .row
     .col-md-12

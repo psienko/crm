@@ -1,48 +1,49 @@
-my-modal title='Edycja' ok='save' close='removeModal'
+my-modal title='Edycja' ok='save' close='removeModal' submitText='Save'
   form submit='ok' role="form"
     .panel.panel-default
       .panel-heading
         strong Dane osobowe
-      .panel-body
-        .form-group
+      .panel-body.row
+        .form-group.col-md-6
           label Imię
-          ' 
+          br 
           view Ember.TextField value=model.firstname class=form-controll
-        .form-group
+        .form-group.col-md-6
           label Nazwisko
-          ' 
+          br 
           view Ember.TextField value=model.lastname class=form-controll
-        .form-group
+        .form-group.col-md-6
           label PESEL
-          ' 
+          br 
           view Ember.TextField value=model.pesel class=form-controll
-        .form-group
+        .form-group.col-md-6
           label Data urodzenia
-          ' 
+          br 
           input type="text" value=model.formattedDate data-provide='datepicker'
 
     .panel.panel-default
       .panel-heading
         strong Dane kontaktowe
-      .panel-body
-        .form-group
-          label Email
-          ' 
-          view Ember.TextField value=model.email class=form-controll
-        .form-group
-          label Numer telefonu
-          ' 
-          view Ember.TextField value=model.phoneNumber class=form-controll
-        .form-group
+      .panel-body.row
+        .form-group.col-md-4
           label Miasto
-          ' 
+          br 
           view Ember.TextField value=model.city class=form-controll
-        .form-group
+        .form-group.col-md-4
           label Ulica numer_budynku/nr_lokalu
-          ' 
+          br 
           input type="text" value=model.address
-        .form-group
+        .form-group.col-md-4
           label Kod pocztowy
-          ' 
+          br 
           input type="text" value=model.postcode
+
+        .form-group.col-md-6
+          label Email
+          br 
+          view Ember.TextField value=model.email class=form-controll
+        .form-group.col-md-6
+          label Numer telefonu
+          br
+          view Ember.TextField value=model.phoneNumber class=form-controll
       

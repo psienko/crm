@@ -9,15 +9,18 @@ App.CustomerModalsController = Ember.ObjectController.extend(
    # @get('model.transaction').commit()
     #return
 #)
-   edit:  ->
-    #record.on 'didUpdate', this, ->
-     # @send 'closeModal'
+
+  actions:
+    edit:  ->
+      #record.on 'didUpdate', this, ->
+      # @send 'closeModal'
       #return
-    @set 'model'
-    return
-  save: ->
-    @get('model.transaction').commit()
-    return
+      @set 'model'
+      return
+    save: ->
+      alert
+      @get('model.transaction').commit()
+      return
 )
 
 App.SettingsModalController = Ember.ObjectController.extend(actions: save: ->

@@ -1,6 +1,6 @@
 App.PeopleController = Ember.ArrayController.extend(
-  showNewForm: false
-  showSearchForm: false
+  showNewForm: 'hide'
+  showSearchForm: 'hide'
   needs: ['application']
   currentPath: Ember.computed.alias('controllers.application.currentPath')
 
@@ -14,9 +14,20 @@ App.PeopleController = Ember.ArrayController.extend(
 
   actions:
     changeVisibilityNewForm: ->
-      @.set('showNewForm', !@.get('showNewForm'))
+      @set('showSearchForm', 'hide')
+      if @get('showNewForm') == 'hide'
+        className = 'show'
+      else
+        className = 'hide'
+      @set('showNewForm', className)
+      @transitionToRoute("people.new")
 
     changeVisibilitySearchForm: ->
-      @.set('showSearchForm', !@.get('showSearchForm'))
-
+      @set('showNewForm', 'hide')
+      if @get('showSearchForm') == 'hide' 
+        className='show' 
+      else
+        className = 'hide'
+      @set('showSearchForm', className)
+      @transitionToRoute("people.search")
 )

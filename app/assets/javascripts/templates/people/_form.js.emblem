@@ -5,19 +5,19 @@
       .form-group.col-md-6
         label Imię
         br
-        view Ember.TextField value=model.firstname class=form-controll
+        view Ember.TextField value=fields.firstname class=form-controll
       .form-group.col-md-6
         label Nazwisko
         br
-        view Ember.TextField value=model.lastname class=form-controll
+        view Ember.TextField value=fields.lastname class=form-controll
       .form-group.col-md-6
         label PESEL
         br
-        view Ember.TextField value=model.pesel class=form-controll
+        view Ember.TextField value=fields.pesel class=form-controll
       .form-group.col-md-6
         label Data urodzenia
         br 
-        input type="text" value=model.formattedDate data-provide='datepicker'
+        input type="text" value=fields.formattedDate data-provide='datepicker'
 
   .panel.panel-default
     .panel-heading
@@ -26,20 +26,20 @@
       .form-group.col-md-5
         label Email
         br 
-        view Ember.TextField value=model.email class=form-controll
+        view Ember.TextField value=fields.email class=form-controll
       .form-group.col-md-6
         label Numer telefonu
         br 
-        view Ember.TextField value=model.phoneNumber class=form-controll
+        view Ember.TextField value=fields.phoneNumber class=form-controll
       .form-group.col-md-5
         label Miejscowość
         br 
-        view Ember.TextField value=model.city class=form-controll
+        view Ember.TextField value=fields.city class=form-controll
       .form-group.col-md-4
         label Ulica nr_budynku/nr_lokalu
         br 
-        input type="text" value=model.address
+        input type="text" value=fields.address
       .form-group.col-md-3
         label Kod pocztowy
         br 
-        input type="text" value=model.postcode
+        input type="text" value=fields.postcode

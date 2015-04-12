@@ -1,0 +1,11 @@
+form submit='search' role="form"
+  .panel-body
+     partial 'people/form'    
+  .panel-footer.text-right
+    button.btn.btn-default.cancel href="#" click="reset" Reset
+    '
+    button.btn.btn-black type='submit'
+      i.fa.fa-search
+      '
+      |Szukaj
+      
