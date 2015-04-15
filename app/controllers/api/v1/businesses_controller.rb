@@ -22,7 +22,7 @@ class Api::V1::BusinessesController < ApplicationController
   end
 
   def update
-    business = business.update(business_params)
+    business.update(business_params)
     respond_with business
   end
 
@@ -33,7 +33,7 @@ class Api::V1::BusinessesController < ApplicationController
   private
 
   def business_params
-    params.require(:customer).permit(:name, :industry, :email, :krs, :nip, :regon, :contacts, :phone_number, :city,
+    params.require(:business).permit(:company_name, :industry, :email, :krs, :nip, :regon, :contacts, :phone_number, :city,
             :address, :postcode)
   end
 end

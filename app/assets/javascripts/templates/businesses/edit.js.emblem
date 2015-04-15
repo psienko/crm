@@ -1,0 +1,64 @@
+my-modal title='Edycja' ok='save' close='removeModal' submitText='Zapisz'
+  if isError
+    .alert.alert-danger
+      button.close{ action closeErrorAlert } aria-hidden="true" data-dismiss="alert" type="button" &times
+      h4 Błędne dane!
+  if isSaved
+    .alert.alert-success
+      strong
+        button.close{action closeSuccessAlert} aria-hidden="true" data-dismiss="alert" type="button" &times
+      h4 Zapisano zmiany
+
+  form submit='save' role="form" id="editFormId"
+    .panel.panel-default
+      .panel-heading
+        strong Dane firmy
+      .panel-body.row
+        .form-group.col-md-6
+          label Nazwa
+          br 
+          view Ember.TextField valueBinding=model.companyName class=form-controll
+        .form-group.col-md-6
+          label Branża
+          br 
+          view Ember.TextField valueBinding=model.industry class=form-controll
+        .form-group.col-md-4
+          label Numer KRS
+          br 
+          view Ember.TextField valueBinding=model.krs class=form-controll
+        .form-group.col-md-4
+          label Numer NIP
+          br 
+          view Ember.TextField valueBinding=model.nip class=form-controll
+        .form-group.col-md-4
+          label Numer REGON
+          br 
+          view Ember.TextField valueBinding=model.regon class=form-controll
+       
+
+    .panel.panel-default
+      .panel-heading
+        strong Dane kontaktowe
+      .panel-body.row
+        .form-group.col-md-4
+          label Miasto
+          br 
+          view Ember.TextField valueBinding=model.city class=form-controll
+        .form-group.col-md-4
+          label Ulica numer_budynku/nr_lokalu
+          br 
+          Ember.TextField valueBinding=model.address
+        .form-group.col-md-4
+          label Kod pocztowy
+          br 
+          Ember.TextField valueBinding=model.postcode
+
+        .form-group.col-md-6
+          label Email
+          br 
+          view Ember.TextField valueBinding=model.email class=form-controll
+        .form-group.col-md-6
+          label Numer telefonu
+          br
+          view Ember.TextField valueBinding=model.phoneNumber class=form-controll
+      

@@ -1,0 +1,83 @@
+  .panel.panel-default
+    .panel-heading
+      strong Dane firmy
+    .panel-body.row
+      .form-group.col-md-4
+        label Nazwa
+        br
+        view Ember.TextField value=fields.companyName class=form-controll
+      .form-group.col-md-6
+        label Branża
+        br
+        view Ember.TextField value=fields.industry class=form-controll
+      .form-group.col-md-4
+        label Numer KRS
+        br 
+        view Ember.TextField valueBinding=fields.krs class=form-controll
+      .form-group.col-md-4
+        label Numer NIP
+        br 
+        view Ember.TextField valueBinding=fields.nip class=form-controll
+      .form-group.col-md-4
+        label Numer REGON
+        br 
+        view Ember.TextField valueBinding=fields.regon class=form-controll
+
+  .panel.panel-default
+    .panel-heading
+      strong Dane kontaktowe
+    .panel-body.row
+      .form-group.col-md-4
+        label Miasto
+        br 
+        view Ember.TextField valueBinding=fields.city class=form-controll
+      .form-group.col-md-4
+        label Ulica numer_budynku/nr_lokalu
+        br 
+        Ember.TextField valueBinding=fields.address
+      .form-group.col-md-4
+        label Kod pocztowy
+        br 
+        Ember.TextField valueBinding=fields.postcode
+
+      .form-group.col-md-4
+        label Email
+        br 
+        view Ember.TextField valueBinding=fields.email class=form-controll
+      .form-group.col-md-4
+        label Numer telefonu
+        br
+        view Ember.TextField valueBinding=fields.phoneNumber class=form-controll
+
+
+      .panel-body.row
+        .col-md-12
+          if allowAddContacts
+            hr
+            h4
+              strong
+                | Kontakty:
+            .row
+              .form-group.col-md-3
+                label Imię
+                br
+                view Ember.TextField valueBinding=fields.contactsArray.[0].name class=form-controll
+              .form-group.col-md-3
+                label Nazwisko
+                br
+                view Ember.TextField valueBinding=fields.contactsArray.[0].lastname class=form-controll
+              .form-group.col-md-3
+                label Stanowisko
+                br
+                view Ember.TextField valueBinding=fields.contactsArray.[0].position class=form-controll
+              .form-group.col-md-3
+                label E-mail
+                br
+                view Ember.TextField valueBinding=fields.contactsArray.[0].email class=form-controll
+            .row
+              .col-md-1.pull-right
+                button.btn.btn-dark{action addContact}
+                  i.fa.fa-plus
+
+
+        

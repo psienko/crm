@@ -1,0 +1,74 @@
+.row
+  .col-md-5
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-info-circle 
+          '
+          |Klient - Firma  
+      .panel-body
+        .row
+          .col-md-4
+            p
+              i Nazwa firmy
+              br
+              h3
+                strong 
+                  model.companyName
+          
+          .col.md-4.col-md-offset-3
+            p
+              i Adres
+              br
+              h4 
+                model.address
+                br
+                model.city
+                '
+                model.postcode
+                '
+
+        hr
+        .row
+          .col-md-2 
+            p
+              i Nr telefonu
+              br
+              h5
+                strong
+                  model.phoneNumber
+
+          .col-md-8.col-md-offset-2
+            p
+              i E-mail firmy
+              br
+              h5
+                strong
+                  model.email
+
+        hr
+        .row
+          .col-md-4 
+            p
+              i Nr KRS
+              br
+              h5
+                strong
+                  model.krs
+          .col-md-4 
+            p
+              i Nr NIP
+              br
+              h5
+                strong
+                  model.nip
+          .col-md-4 
+            p
+              i Nr REGON
+              br
+              h5
+                strong
+                  model.regon
+
+
+      .panel-footer

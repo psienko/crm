@@ -9,5 +9,7 @@ App.Business = App.Customerable.extend(
   krs: DS.attr('string'),
   nip: DS.attr('string'),
   regon: DS.attr('string'),
-  contacts: DS.attr('string')
+  contacts: DS.attr('string'),
+
+  contactsArray: DS.attr()
 )
