@@ -1,5 +1,5 @@
-App.Business = App.Customerable.extend({
-  name: DS.attr('string'),
+App.Business = App.Customerable.extend(
+  companyName: DS.attr('string'),
   industry: DS.attr('string'),
   email: DS.attr('string'),
   phoneNumber: DS.attr('string'),
@@ -8,5 +8,6 @@ App.Business = App.Customerable.extend({
   postcode: DS.attr('string'),
   krs: DS.attr('string'),
   nip: DS.attr('string'),
-  regon: DS.attr('string')
-});
+  regon: DS.attr('string'),
+  contacts: DS.attr('string')
+)

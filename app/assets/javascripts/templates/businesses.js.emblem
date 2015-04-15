@@ -15,11 +15,26 @@
         tbody
           each business in controller
             tr
-              td = business.name
+              td = business.companyName
               td = business.industry
               td = business.regon
               td 
                 = business.city
                 '
                 =business.address 
+              td 
+                link-to 'person' person class="btn btn-sm btn-primary" 
+                  | Szczegóły
+                  '
+                  i.fa.fa-info-circle
+                '
+                button.btn.btn-sm.btn-default{action 'showModal' 'people.edit' person} 
+                  | Edytuj
+                  '
+                  i.fa.fa-pencil-square-o
+                '
+                link-to 'people' class="btn btn-sm btn-black"
+                  | Dodaj umowę
+                  '
+                  i.fa.fa-file
       .panel-footer

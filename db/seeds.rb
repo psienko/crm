@@ -56,7 +56,7 @@ end
 
 20.times do
   Business.create!(
-    name: Faker::Company.name,
+    company_name: Faker::Company.name,
     industry:  industries[Random.rand(3)],
     email: Faker::Internet.email,
     krs: 10.times.map{ Random.rand(10).to_s }.reduce(:+),
