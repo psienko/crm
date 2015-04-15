@@ -1,6 +1,6 @@
 App.MyModalComponent = Ember.Component.extend(
-  actions: ok: ->
-    @$('.modal').modal 'hide'
+  actions: ok: (params)->
+    #@$('.modal').modal 'hide'
     @sendAction 'ok'
     return
   show: (->

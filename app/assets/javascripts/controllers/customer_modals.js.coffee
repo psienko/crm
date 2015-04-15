@@ -15,10 +15,11 @@ App.CustomerModalsController = Ember.ObjectController.extend(
       #record.on 'didUpdate', this, ->
       # @send 'closeModal'
       #return
+      alert("")
       @set 'model'
       return
     save: ->
-      alert
+      alert('ss')
       @get('model.transaction').commit()
       return
 )

@@ -1,3 +1,8 @@
+if showError
+    .alert.alert-danger
+      button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+      h4 Błędne dane!
+      
 form submit='create' role="form"
   .panel-body
     partial 'people/form'    

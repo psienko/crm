@@ -1,8 +1,13 @@
 App.PeopleController = Ember.ArrayController.extend(
+  search: false
   showNewForm: 'hide'
   showSearchForm: 'hide'
-  needs: ['application']
+  needs: ['application', 'peopleSearch']
   currentPath: Ember.computed.alias('controllers.application.currentPath')
+
+  people: ( ->
+    if @get('search') then @get('searchedPeople') else @
+  ).property('search', 'searchedPeople')
 
   hideIndex : (->
       @get('currentPath') == "customers.people.person"
@@ -30,4 +35,8 @@ App.PeopleController = Ember.ArrayController.extend(
         className = 'hide'
       @set('showSearchForm', className)
       @transitionToRoute("people.search")
+
+    restoreAllResult: ->
+      @set 'search', false
+
 )

@@ -17,7 +17,7 @@
       .form-group.col-md-6
         label Data urodzenia
         br 
-        input type="text" value=fields.formattedDate data-provide='datepicker'
+        input type="text" id="dateOfBirth" value=fields.dateOfBirth data-provide='datepicker'
 
   .panel.panel-default
     .panel-heading
@@ -38,8 +38,8 @@
       .form-group.col-md-4
         label Ulica nr_budynku/nr_lokalu
         br 
-        input type="text" value=fields.address
+        view Ember.TextField value=fields.address class=form-controll
       .form-group.col-md-3
         label Kod pocztowy
         br 
-        input type="text" value=fields.postcode
+        view Ember.TextField value=fields.postcode class=form-controll

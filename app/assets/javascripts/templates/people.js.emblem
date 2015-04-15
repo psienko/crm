@@ -35,8 +35,8 @@ unless hideIndex
                 button.btn.btn-black.btn-transparent.pull-right{action "changeVisibilitySearchForm"} 
                   i.fa.fa-caret-square-o-down
                 
-      div class=showSearchForm
-        outlet 'searchCustomer' 
+        div class=showSearchForm
+          outlet 'searchCustomer' 
        
 
   .row
@@ -45,6 +45,12 @@ unless hideIndex
         .panel-heading
           %h1.panel-title Klienci indywidualni
         .panel-body
+          if search
+            .alert.alert-warning
+              strong
+                button.close{action restoreAllResult} type="button"       &times
+              h4 
+                b Wyniki wyszukania:
           table.table.table-condensed
             thead
               tr
@@ -54,7 +60,7 @@ unless hideIndex
                 th Email
                 th
             tbody
-              each person in controller
+              each person in people
                 tr
                   td = person.firstname
                   td = person.lastname

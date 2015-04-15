@@ -8,6 +8,6 @@
       .modal-body
         =yield
       .modal-footer
-        button.btn.btn-default type="button" data-dismiss="modal" Close
+        button.btn.btn-default type="button" data-dismiss="modal" Anuluj
         button.btn.btn-black{action 'ok'} 
           submitText

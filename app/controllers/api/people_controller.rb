@@ -3,10 +3,14 @@ class Api::PeopleController < ApplicationController
 
   before_action :authenticate_employee!
   expose(:people)
-  expose(:person)
+  expose(:person) { Person.find(params[:id]) }
 
   def index
-    respond_with people
+    if params[:search].eql?('search') && params[:person].present?
+      respond_with Person.search(params[:person])
+    else
+      respond_with people
+    end
   end
 
   def show
@@ -14,11 +18,12 @@ class Api::PeopleController < ApplicationController
   end
 
   def create
-    respond_with People.create(person_params)
+    respond_with :api, Person.create(person_params)
   end
 
   def update
-    respond_with person.update(person_params)
+    person.update(person_params)
+    respond_with person
   end
 
   def destroy
@@ -27,8 +32,12 @@ class Api::PeopleController < ApplicationController
 
   private
 
+  def redner_validations_error errors
+    render json: {errors: errors.to_h}, status: :unprocessable_entity
+  end
+
   def person_params
-    params.require(:customer)
+    params.require(:person)
     .permit(:firstname, :lastname, :pesel, :email, :phone_number, :city,
             :address, :postcode, :date_of_birth)
   end

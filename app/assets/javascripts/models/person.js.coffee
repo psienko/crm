@@ -1,4 +1,4 @@
-App.Person = App.Customerable.extend({
+App.Person = App.Customerable.extend(
   firstname: DS.attr('string'),
   lastname: DS.attr('string'),
   pesel: DS.attr('string'),
@@ -12,6 +12,8 @@ App.Person = App.Customerable.extend({
   formattedDate: ( ->
     moment(@get('dateOfBirth')).format 'DD/MM/YYYY'
   ).property('dateOfBirth')
-});
+)
 
-
+App.Person.reopenClass
+  valid: (fields) ->
+    fields.firstname and fields.lastname
