@@ -4,7 +4,13 @@ Rails.application.routes.draw do
     get 'employees/edit' => 'devise/registrations#edit', as: 'edit_employee_registration'
     put 'employees' => 'devise/registrations#update', as: 'employee_registration'
   end
-  resources :customers
+
+  namespace :api do
+    resources :customers
+    resources :people
+    resources :businesses
+  end
+  get '*path', to: 'home#show'
   root 'home#show'
 
   # The priority is based upon order of creation: first created -> highest priority.

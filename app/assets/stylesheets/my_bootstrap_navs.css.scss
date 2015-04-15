@@ -21,6 +21,11 @@ $nav-tabs-active-link-hover-border-color: #ddd !default;
 $nav-tabs-justified-link-border-color: #ddd !default;
 $nav-tabs-justified-active-link-border-color: $body-bg !default;
 
+//== Pills
+$nav-pills-border-radius: $border-radius-base !default;
+$nav-pills-active-link-hover-bg: $nav-tabs-active-link-hover-bg !default;
+$nav-pills-active-link-hover-color: $nav-tabs-active-link-hover-color !default;
+
 // Tabs
 // -------------------------
 // Give the tabs something to sit on
@@ -55,6 +60,32 @@ $nav-tabs-justified-active-link-border-color: $body-bg !default;
         }
       }
   }
+  .active{
+    &,
+    &:hover,
+    &:focus {
+      color: $nav-tabs-active-link-hover-color;
+      background-color: $nav-tabs-active-link-hover-bg;
+      border: 1px solid $nav-tabs-active-link-hover-border-color;
+      border-bottom-color: transparent;
+      cursor: default;
+    }
+  }
 }
+
+.nav-pills{
+  .active {
+    &,
+    &:hover,
+    &:focus {
+      color: $nav-pills-active-link-hover-color;
+      background-color: #337ab7;
+    }
+  }
+}
+
+
+
+
 
 

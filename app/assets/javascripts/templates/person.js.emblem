@@ -1,0 +1,63 @@
+.row
+  .col-md-5
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-info-circle 
+          '
+          |Klient   
+      .panel-body
+        .row
+          .col-md-4
+            p
+              i Imię Nazwisko
+              br
+              h4
+                strong 
+                  model.firstname
+                  '
+                  model.lastname
+          .col-md-3 
+            p
+              i PESEL
+              br
+              h5
+                strong
+                  model.pesel
+
+          .col.md-5
+            p
+              i Adres
+              br
+              h5
+                strong 
+                  model.address
+                  '
+                  model.city
+                  '
+                  model.postcode  
+        .row
+          .col-md-8 
+            p
+              i E-mail
+              br
+              h5
+                strong
+                  model.email
+          .col-md-4 
+            p
+              i Nr telefonu
+              br
+              h5
+                strong
+                  model.phoneNumber
+
+          .col-md-12 
+            p
+              i Data urodzenia
+              br
+              h5
+                strong
+                  model.formattedDate
+
+      .panel-footer

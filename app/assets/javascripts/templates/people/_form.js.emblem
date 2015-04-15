@@ -1,0 +1,45 @@
+  .panel.panel-default
+    .panel-heading
+      strong Dane osobowe
+    .panel-body.row
+      .form-group.col-md-6
+        label Imię
+        br
+        view Ember.TextField value=fields.firstname class=form-controll
+      .form-group.col-md-6
+        label Nazwisko
+        br
+        view Ember.TextField value=fields.lastname class=form-controll
+      .form-group.col-md-6
+        label PESEL
+        br
+        view Ember.TextField value=fields.pesel class=form-controll
+      .form-group.col-md-6
+        label Data urodzenia
+        br 
+        input type="text" id="dateOfBirth" value=fields.dateOfBirth data-provide='datepicker'
+
+  .panel.panel-default
+    .panel-heading
+      strong Dane kontaktowe
+    .panel-body.row
+      .form-group.col-md-5
+        label Email
+        br 
+        view Ember.TextField value=fields.email class=form-controll
+      .form-group.col-md-6
+        label Numer telefonu
+        br 
+        view Ember.TextField value=fields.phoneNumber class=form-controll
+      .form-group.col-md-5
+        label Miejscowość
+        br 
+        view Ember.TextField value=fields.city class=form-controll
+      .form-group.col-md-4
+        label Ulica nr_budynku/nr_lokalu
+        br 
+        view Ember.TextField value=fields.address class=form-controll
+      .form-group.col-md-3
+        label Kod pocztowy
+        br 
+        view Ember.TextField value=fields.postcode class=form-controll

@@ -1,0 +1,85 @@
+br
+
+.row
+  .col-md-12
+    outlet
+
+unless hideIndex
+  .row
+    .col-md-6
+      .panel.panel-inverse
+        .panel-heading
+          .row 
+            .col-md-12
+              %h1.panel-title
+                b.fa.fa-plus-square
+                '
+                | Nowy klient
+                
+                button.btn.btn-black.btn-transparent.pull-right{action "changeVisibilityNewForm"} 
+                  i.fa.fa-caret-square-o-down.fa-1x
+        
+        div class=showNewForm
+          outlet 'newCustomer'
+
+    .col-md-6
+      .panel.panel-inverse
+        .panel-heading
+          .row 
+            .col-md-12
+              %h1.panel-title 
+                i.fa.fa-search
+                '
+                | Szukaj
+                
+                button.btn.btn-black.btn-transparent.pull-right{action "changeVisibilitySearchForm"} 
+                  i.fa.fa-caret-square-o-down
+                
+        div class=showSearchForm
+          outlet 'searchCustomer' 
+       
+
+  .row
+    .col-md-12
+      .panel.panel-inverse
+        .panel-heading
+          %h1.panel-title Klienci indywidualni
+        .panel-body
+          if search
+            .alert.alert-warning
+              strong
+                button.close{action restoreAllResult} type="button"       &times
+              h4 
+                b Wyniki wyszukania:
+          table.table.table-condensed
+            thead
+              tr
+                th Imię
+                th Nazwisko
+                th Pesel
+                th Email
+                th
+            tbody
+              each person in people
+                tr
+                  td = person.firstname
+                  td = person.lastname
+                  td = person.pesel
+                  td = person.email
+                  td 
+                    link-to 'person' person class="btn btn-sm btn-primary" 
+                      | Szczegóły
+                      '
+                      i.fa.fa-info-circle
+                    '
+                    button.btn.btn-sm.btn-default{action 'showModal' 'people.edit' person} 
+                      | Edytuj
+                      '
+                      i.fa.fa-pencil-square-o
+                    '
+                    link-to 'people' class="btn btn-sm btn-black"
+                      | Dodaj umowę
+                      '
+                      i.fa.fa-file
+        .panel-footer
+

@@ -1,0 +1,13 @@
+.modal.fade
+  .modal-dialog.modal-large 
+    .modal-content.modal-inverse
+      .modal-header
+        button.close data-dismiss="modal" aria-hidden="true" &times;
+        h4.modal-title
+          =title
+      .modal-body
+        =yield
+      .modal-footer
+        button.btn.btn-default type="button" data-dismiss="modal" Anuluj
+        button.btn.btn-black{action 'ok'} 
+          submitText

@@ -1,0 +1,25 @@
+.row
+  .col-md-12
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title Klienci
+      .panel-body
+      table.table.table-condensed
+        thead
+          tr
+            th Nazwa
+            th Branża
+            th REGON
+            th Adres
+            th
+        tbody
+          each business in controller
+            tr
+              td = business.name
+              td = business.industry
+              td = business.regon
+              td 
+                = business.city
+                '
+                =business.address 
+      .panel-footer

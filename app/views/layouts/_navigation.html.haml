@@ -1,7 +1,7 @@
 -# navigation styled for Bootstrap 3.0
 .row
   .col-md-12
-    %nav.navbar.navbar-inverse.navbar-fixed-top
+    %nav.navbar.navbar-inverse.navbar-fixed-top{ "data-no-turbolink" => "", role: "navigation" }
       .container-fluid
         .navbar-header
           %button.navbar-toggle{"data-target" => ".navbar-collapse", "data-toggle" => "collapse", :type => "button"}
@@ -14,3 +14,4 @@
         .collapse.navbar-collapse.navbar-right
           %ul.nav.navbar-nav
             = render 'layouts/navigation_links'
+    }

@@ -1,0 +1,59 @@
+my-modal title='Edycja' ok='save' close='removeModal' submitText='Zapisz'
+  if isError
+    .alert.alert-danger
+      button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+      h4 Błędne dane!
+  if isSaved
+    .alert.alert-success
+      strong
+        button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+      h4 Zapisano zmiany
+
+  form submit='save' role="form" id="editFormId"
+    .panel.panel-default
+      .panel-heading
+        strong Dane osobowe
+      .panel-body.row
+        .form-group.col-md-6
+          label Imię
+          br 
+          view Ember.TextField valueBinding=model.firstname class=form-controll
+        .form-group.col-md-6
+          label Nazwisko
+          br 
+          view Ember.TextField valueBinding=model.lastname class=form-controll
+        .form-group.col-md-6
+          label PESEL
+          br 
+          view Ember.TextField valueBinding=model.pesel class=form-controll
+        .form-group.col-md-6
+          label Data urodzenia
+          br 
+          input type="text" id="dateOfBirthModal" valueBinding=model.formattedDate value=model.formattedDate data-provide='datepicker'
+
+    .panel.panel-default
+      .panel-heading
+        strong Dane kontaktowe
+      .panel-body.row
+        .form-group.col-md-4
+          label Miasto
+          br 
+          view Ember.TextField valueBinding=model.city class=form-controll
+        .form-group.col-md-4
+          label Ulica numer_budynku/nr_lokalu
+          br 
+          Ember.TextField valueBinding=model.address
+        .form-group.col-md-4
+          label Kod pocztowy
+          br 
+          Ember.TextField valueBinding=model.postcode
+
+        .form-group.col-md-6
+          label Email
+          br 
+          view Ember.TextField valueBinding=model.email class=form-controll
+        .form-group.col-md-6
+          label Numer telefonu
+          br
+          view Ember.TextField valueBinding=model.phoneNumber class=form-controll
+      
