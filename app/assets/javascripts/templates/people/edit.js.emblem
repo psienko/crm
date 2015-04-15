@@ -1,12 +1,12 @@
 my-modal title='Edycja' ok='save' close='removeModal' submitText='Zapisz'
   if isError
     .alert.alert-danger
-      button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+      button.close{ action closeErrorAlert } aria-hidden="true" data-dismiss="alert" type="button" &times
       h4 Błędne dane!
   if isSaved
     .alert.alert-success
       strong
-        button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+        button.close{action closeSuccessAlert} aria-hidden="true" data-dismiss="alert" type="button" &times
       h4 Zapisano zmiany
 
   form submit='save' role="form" id="editFormId"

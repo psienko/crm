@@ -13,4 +13,10 @@ App.PeopleEditController = Ember.ObjectController.extend(
         _this.set 'isSaved', true
       , ->
         _this.set 'isError', true
+
+    closeErrorAlert: ->
+      @set 'isError', false
+
+    closeSuccessAlert: ->
+      @set 'isSaved', false
 )
