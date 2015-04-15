@@ -1,4 +1,4 @@
-class Api::CustomersController < ApplicationController
+class Api::V1::CustomersController < ApplicationController
   respond_to :json
 
   before_action :authenticate_employee!

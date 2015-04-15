@@ -1,7 +1,7 @@
 # Override the default adapter with the `DS.ActiveModelAdapter` which
 
 DS.RESTAdapter.reopen
-  namespace: 'api'
+  namespace: 'api/v1'
   ajaxError: (jqXHR) ->
     error = @_super(jqXHR)
 

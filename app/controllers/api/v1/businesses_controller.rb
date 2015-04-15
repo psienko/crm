@@ -1,12 +1,16 @@
-class Api::BusinessesController < ApplicationController
+class Api::V1::BusinessesController < ApplicationController
   respond_to :json
 
   before_action :authenticate_employee!
   expose(:businesses)
-  expose(:business)
+  expose(:business) { Business.find(params[:id]) }
 
   def index
-    respond_with businesses
+    if params[:search].eql?('search') && params[:business].present?
+      respond_with Business.search(params[:business])
+    else
+      respond_with businesses
+    end
   end
 
   def show
@@ -14,12 +18,12 @@ class Api::BusinessesController < ApplicationController
   end
 
   def create
-    respond_with :api, Business.create(business_params)
-    
+    respond_with :api, :v1, Business.create(business_params) 
   end
 
   def update
-    respond_with business.update(business_params)
+    business = business.update(business_params)
+    respond_with business
   end
 
   def destroy

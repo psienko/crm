@@ -3,9 +3,9 @@ class Person < ActiveRecord::Base
   after_create :create_customer
 
   validates_presence_of :firstname, :lastname, :phone_number, :city, :address, :date_of_birth
-  validates :email, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
+  validates :email, uniqueness: true, format: { with: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\Z/i }
   validates :postcode, presence: true, format: { with: /[0-9]{2}-?[0-9]{3}/ }
-  validates :pesel, presence: true, format: { with: /\d{11}/ }
+  validates :pesel, uniqueness: true, presence: true, format: { with: /\d{11}/ }
 
   scope :firstname, -> firstname { where firstname: firstname }
   scope :lastname, -> lastname { where lastname: lastname }

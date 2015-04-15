@@ -6,9 +6,11 @@ Rails.application.routes.draw do
   end
 
   namespace :api do
-    resources :customers
-    resources :people
-    resources :businesses
+    namespace :v1 do
+      resources :customers
+      resources :people
+      resources :businesses
+    end
   end
   get '*path', to: 'home#show'
   root 'home#show'

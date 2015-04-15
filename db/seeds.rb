@@ -33,7 +33,7 @@ class << self
     positions = ['prezes', 'członek zarządu', 'pracownik biurowy']
     contacts = []
     3.times do
-      contacts << { 'name' => Faker::Name.first_name, 'lastname' => Faker::Name.last_name, 'position' => positions[Random.rand(3)], email: Faker::Internet.email }
+      contacts << { name: Faker::Name.first_name, lastname: Faker::Name.last_name, position: positions[Random.rand(3)], email: Faker::Internet.email }
     end
     contacts
   end

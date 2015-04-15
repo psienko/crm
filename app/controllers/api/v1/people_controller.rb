@@ -1,4 +1,4 @@
-class Api::PeopleController < ApplicationController
+class Api::V1::PeopleController < ApplicationController
   respond_to :json
 
   before_action :authenticate_employee!
@@ -18,7 +18,7 @@ class Api::PeopleController < ApplicationController
   end
 
   def create
-    respond_with :api, Person.create(person_params)
+    respond_with :api, :v1, Person.create(person_params)
   end
 
   def update
