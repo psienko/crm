@@ -1,6 +1,7 @@
 App.BusinessesNewController = Ember.Controller.extend(
   isCreated: false
   allowAddContacts: true
+  needs: ['businesses']
 
   actions:
     create: ->
@@ -13,4 +14,8 @@ App.BusinessesNewController = Ember.Controller.extend(
 
     reset: ->
       @set 'fields', {}
+      @set 'contactsFields', []
+
+    addContact: ->
+      @get('contactsArray').pushObject(@get 'contactFields')
 )

@@ -8,9 +8,9 @@ class Business < ActiveRecord::Base
   validates :krs, uniqueness: true, presence: true, format: { with: /\d{10}/ }
   validates :nip, uniqueness: true, presence: true, format: { with: /\d{10}/ }
   validates :regon, uniqueness: true, presence: true, format: { with: /\d{10}/ }
-  validates :contacts, presence: true
+  #validates :contacts, presence: true
 
-  scope :company_name, -> name { where name: name }
+  scope :company_name, -> name { where company_name: name }
   scope :industry, -> industry { where industry: industry }
   scope :email, -> email { where email: email }
   scope :krs, -> krs { where krs: krs }

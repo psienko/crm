@@ -57,23 +57,24 @@
             h4
               strong
                 | Kontakty:
-            .row
-              .form-group.col-md-3
-                label Imię
-                br
-                view Ember.TextField valueBinding=fields.contactsArray.[0].name class=form-controll
-              .form-group.col-md-3
-                label Nazwisko
-                br
-                view Ember.TextField valueBinding=fields.contactsArray.[0].lastname class=form-controll
-              .form-group.col-md-3
-                label Stanowisko
-                br
-                view Ember.TextField valueBinding=fields.contactsArray.[0].position class=form-controll
-              .form-group.col-md-3
-                label E-mail
-                br
-                view Ember.TextField valueBinding=fields.contactsArray.[0].email class=form-controll
+            each contact in contactsArray
+              .row
+                .form-group.col-md-3
+                  label Imię
+                  br
+                  view Ember.TextField valueBinding=contact.name class=form-controll
+                .form-group.col-md-3
+                  label Nazwisko
+                  br
+                  view Ember.TextField valueBinding=contact.lastname class=form-controll
+                .form-group.col-md-3
+                  label Stanowisko
+                  br
+                  view Ember.TextField valueBinding=contact.position class=form-controll
+                .form-group.col-md-3
+                  label E-mail
+                  br
+                  view Ember.TextField valueBinding=contact.email class=form-controll
             .row
               .col-md-1.pull-right
                 button.btn.btn-dark{action addContact}
