@@ -147,3 +147,14 @@ more-margin-bottom {
 {
     width: 800px; 
 } 
+
+.lower-case {
+    text-transform: lowercase;
+}
+
+.small-thumb {
+  img {
+    width: 30px;
+    height: 30px;
+  }
+}

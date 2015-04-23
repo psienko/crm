@@ -17,15 +17,20 @@ employee_list = [
   ['Christopher', 'Turner', 'hristopher.turner@example.com', 'password'],
   ['Brandon', 'Kelly', 'brandon.kelly@example.com', 'password'],
   ['Jessica', 'Lambert', 'jessica.lambert@example.com', 'password'],
-  ['Simon', 'Lawrence', 'simon.lawrence@example.com', 'password']
+  ['Simon', 'Lawrence', 'simon.lawrence@example.com', 'password'],
+  ['Brandon', 'Lambert', 'brandon.lambert@example.com', 'password'],
+  ['Jan', 'Kowalski', 'jan.kowalski@example.com', 'password'],
+  ['Krzysztof', 'Nowak', 'krzysztof.nowak@example.com', 'password']
 ]
+
+team_name_list = ["alfa", "beta", "gamma"]
 
 industries = ['handel', 'IT', 'budownictwo', 'gastronomia', 'medycyna', 'marketing']
 
 
 
 employee_list.each do |firstname, lastname, email, password|
-  Employee.create! email: email, password: password, password_confirmation: password
+  Employee.create! firstname: firstname, lastname: lastname, email: email, password: password, password_confirmation: password
 end
 
 class << self
@@ -70,3 +75,15 @@ end
     )
 end
 
+ec_steps = Employee.count / team_name_list.count
+start = 0
+
+team_name_list.each_with_index do |name, i|
+  start = i == 0 ? 1 : start + ec_steps
+  puts "start : #{start} \n"
+  puts "start : #{start + ec_steps} \n"
+  Team.create!(
+    team_name: name,
+    employees: Employee.where('id>= ? AND id<=?',start, start + ec_steps)
+    )
+end

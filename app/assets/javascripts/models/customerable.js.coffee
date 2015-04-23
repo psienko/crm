@@ -1,9 +1,15 @@
-App.Customerable = DS.Model.extend({
-  #customer: DS.belongsTo('customer')
+App.Customerable = DS.Model.extend
+  customer: DS.belongsTo('customer')
 
   customerableType: ( ->
-    @constructor.typeKey
-    return
+    @.constructor.typeKey
   ).property()
 
-});
+ # customer: DS.belongsTo('customer')
+
+ # customerableType: ( ->
+  #  @constructor.typeKey
+   # return
+  #).property()
+
+#});

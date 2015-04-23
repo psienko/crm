@@ -8,7 +8,7 @@
           i.fa.fa-tachometer
 
       li role="presentation"
-        a href="#" 
+        link-to 'employees' 
           | Pracownicy
           '
           i.fa.fa-user-secret.fa-user
@@ -19,6 +19,7 @@
           '
           i.fa.fa-users
 
+
       li role="presentation"
         a href="#" 
           | Zadania
@@ -26,7 +27,7 @@
           i.fa.fa-tasks
 
       li role="presentation"
-        a href="#" 
+        link-to 'teams'
           | Grupy
           '
           i.fa.fa-sitemap

@@ -1,4 +1,4 @@
-App.CustomerModalsController = Ember.ObjectController.extend(
+#App.CustomerModalsController = Ember.ObjectController.extend(
   #edit: (record) ->
    # record.on 'didUpdate', this, ->
     #  @send 'closeModal'
@@ -10,30 +10,30 @@ App.CustomerModalsController = Ember.ObjectController.extend(
     #return
 #)
 
-  actions:
-    edit:  ->
+ # actions:
+  #  edit:  ->
       #record.on 'didUpdate', this, ->
       # @send 'closeModal'
       #return
-      alert("")
-      @set 'model'
-      return
-    save: ->
-      alert('ss')
-      @get('model.transaction').commit()
-      return
-)
+   #   alert("")
+    #  @set 'model'
+     # return
+    #save: ->
+     # alert('ss')
+     # @get('model.transaction').commit()
+     # return
+#)
 
-App.SettingsModalController = Ember.ObjectController.extend(actions: save: ->
+#App.SettingsModalController = Ember.ObjectController.extend(actions: save: ->
   # save to server
-  return
-)
+ # return
+#)
 
-App.LogoutModalController = Ember.Controller.extend(actions: logout: ->
-  alert 'logout'
-  return
-)
+#App.LogoutModalController = Ember.Controller.extend(actions: logout: ->
+ # alert 'logout'
+  #return
+#)
 
-App.IndexRoute = Ember.Route.extend(model: ->
-  Ember.Object.create name: 'My name'
-)
+#App.IndexRoute = Ember.Route.extend(model: ->
+ # Ember.Object.create name: 'My name'
+#)

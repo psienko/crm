@@ -1,0 +1,48 @@
+br
+
+.row
+  .col-md-12
+    outlet
+
+  .row
+    .col-md-12
+      .panel.panel-inverse
+        .panel-heading
+          %h1.panel-title Pracownicy
+        .panel-body
+          if search
+            .alert.alert-warning
+              strong
+                button.close{action restoreAllResult} type="button"       &times
+              h4 
+                b Wyniki wyszukania:
+          table.table.table-condensed
+            thead
+              tr
+                th
+                th Imię
+                th Nazwisko
+                th Email
+                th Grupa
+                th
+            tbody
+              each employee in controller
+                tr
+                  td.small-thumb ==employee.avatarThumb
+                  td = employee.firstname
+                  td = employee.lastname
+                  td = employee.email
+                  td = employee.team.teamName
+                  td 
+                    link-to 'employees' person class="btn btn-sm btn-primary" 
+                      | Szczegóły
+                      '
+                      i.fa.fa-info-circle
+                    '
+                    button.btn.btn-sm.btn-default{action 'showModal' 'people.edit' person} 
+                      | Edytuj
+                      '
+                      i.fa.fa-pencil-square-o
+                    
+        .panel-footer
+

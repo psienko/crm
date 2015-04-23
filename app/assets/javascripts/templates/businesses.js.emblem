@@ -12,12 +12,10 @@ unless hideIndex
           .row 
             .col-md-12
               %h1.panel-title
-                b.fa.fa-plus-square
-                '
                 | Nowa firma
               
                 button.btn.btn-black.btn-transparent.pull-right{action "changeVisibilityNewForm"} 
-                  i.fa.fa-caret-square-o-down.fa-1x
+                  i.fa.fa-plus-square
         
         div class=showNewForm
           outlet 'newCustomer'
@@ -27,13 +25,11 @@ unless hideIndex
         .panel-heading
           .row 
             .col-md-12
-              %h1.panel-title 
-                i.fa.fa-search
-                '
+              %h1.panel-title
                 | Szukaj
                 
                 button.btn.btn-black.btn-transparent.pull-right{action "changeVisibilitySearchForm"} 
-                  i.fa.fa-caret-square-o-down
+                  i.fa.fa-search
                 
         div class=showSearchForm
           outlet 'searchCustomer'

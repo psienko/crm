@@ -5,6 +5,7 @@ class Employee < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar, AvatarUploader
+  belongs_to :team
 
   def avatar_path(option = nil)
     return avatar.url(option) if avatar.present?

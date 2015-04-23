@@ -1,0 +1,41 @@
+br
+
+.row
+  .col-md-12
+    outlet
+
+.row
+  each team in controller
+    .col-sm-6.col-md-4
+      .thumbnail
+        h1
+          i.fa.fa-users.fa-1x
+          '
+          strong
+            team.teamName
+        .caption
+          h3 Członkowie:
+          p
+            ul.list-group
+              each member in team.employees
+                li.list-group-item
+                  .row
+                    .col-md-9
+                      ==member.avatarThumb
+                      '
+                      member.firstname
+                      '
+                      member.lastname
+                    .col-md-3
+                      .pull-right
+                        br
+                        button.btn.btn.sm.btn-default.fa.fa-info-circle.fa-lg
+                        '
+                        button.btn.btn.sm.btn-danger.fa.fa-trash-o.fa-lg
+          p
+            a href="#" class="btn btn-black" role="button" Dodaj członka
+            '
+            a href="#" class="btn btn-default" role="button" Button
+
+
+  

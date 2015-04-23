@@ -1,5 +1,8 @@
 # Override the default adapter with the `DS.ActiveModelAdapter` which
 
+App.Store = DS.Store.extend()
+App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
+
 DS.RESTAdapter.reopen
   namespace: 'api/v1'
   ajaxError: (jqXHR) ->
@@ -18,10 +21,8 @@ DS.RESTAdapter.reopen
       error
 
 
-App.ApplicationAdapter = DS.ActiveModelAdapter.extend()
-
-
-App.MyAdapter = DS.RESTAdapter.extend(findQuery: (store, type, query) ->
+#DS.RESTAdapter
+App.MyAdapter = App.ApplicationAdapter.extend(findQuery: (store, type, query) ->
   url = @buildURL(type.typeKey)
   proc = 'GET'
   obj = data: query

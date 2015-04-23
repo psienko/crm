@@ -12,3 +12,5 @@ App.Router.map ->
       @resource 'person', path: '/:id'
       @route 'new'
       @route 'search'
+  @resource 'employees', path: '/employees'
+  @resource 'teams', path: '/teams'
