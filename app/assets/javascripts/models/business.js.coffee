@@ -12,4 +12,25 @@ App.Business = App.Customerable.extend
   regon: DS.attr('string')
   contacts: DS.attr('string')
 
-  contactsArray: DS.attr()
+  contactsArray: ( ->
+    input = @get 'contacts'
+    outputTable = []
+    hashTable = {}
+    end_pos = 0
+    while end_pos != input.lastIndexOf('}')
+      start_pos = input.indexOf('{', end_pos) + 1
+      end_pos = input.indexOf('}', start_pos)
+      token = input.substring(start_pos, end_pos)
+      tokens = token.split(',')
+      i = 0
+      while i < tokens.length
+        keyValuePair = tokens[i].split('=>')
+        key = keyValuePair[0].replace(':','').replace(' ','')
+        value = keyValuePair[1].replace(/"/gi, '')
+        hashTable[key] = value
+        i++
+      outputTable.push hashTable
+      hashTable = {}
+    outputTable
+  ).property('contacts')
+
