@@ -61,4 +61,36 @@ my-modal title='Edycja' ok='save' close='removeModal' submitText='Zapisz'
           label Numer telefonu
           br
           view Ember.TextField valueBinding=model.phoneNumber class=form-controll
+
+
+
+        .panel-body.row
+          .col-md-12
+            if allowAddContacts
+              hr
+              h4
+                strong
+                  | Kontakty:
+              each contact in contactsArray
+                .row
+                  .form-group.col-md-3
+                    label Imię
+                    br
+                    view Ember.TextField valueBinding=contact.name class=form-controll
+                  .form-group.col-md-3
+                    label Nazwisko
+                    br
+                    view Ember.TextField  valueBinding=contact.lastname class=form-controll
+                  .form-group.col-md-3
+                    label Stanowisko
+                    br
+                    view Ember.TextField valueBinding=contact.position class=form-controll
+                  .form-group.col-md-3
+                    label E-mail
+                    br
+                    view Ember.TextField valueBinding=contact.email class=form-controll
+              .row
+                .col-md-1.pull-right
+                  button.btn.btn-dark{action addContact}
+                    i.fa.fa-plus
       

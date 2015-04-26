@@ -1,6 +1,8 @@
 App.BusinessesEditController = Ember.ObjectController.extend(
   isSaved: false
   isError: false
+  allowAddContacts: true
+
   actions:
     save: ->
       @set 'isError', false
@@ -16,4 +18,7 @@ App.BusinessesEditController = Ember.ObjectController.extend(
 
     closeSuccessAlert: ->
       @set 'isSaved', false
+
+    addContact: ->
+      @get('contactsArray').pushObject(@get 'contactFields')
 )

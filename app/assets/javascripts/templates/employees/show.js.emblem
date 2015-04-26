@@ -1,0 +1,45 @@
+my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitText='Zapisz' hideOKButton=true
+  .row
+    .col-md-12
+      .text-right
+        span title="Dodaj pracownika do grupy"
+          button.btn.btn-black
+            i.fa.fa-sitemap
+            '
+            | Dodaj do grupy
+        '
+        span title="Napisz do tego pracownika"
+          button.btn.btn-warning
+            i.fa.fa-envelope
+            '
+            | Napisz
+
+      .row
+        .col-md-2.col-sm-2.medium-thumb
+          ==model.avatarThumb  
+        .col-md-4.col-sm-10
+          div
+            p
+              i Imię Nazwisko
+              br
+              h3
+                strong 
+                  model.firstname
+                  '
+                  model.lastname
+      hr
+      .row
+        .col-md-6
+          p
+            i E-mail
+            br
+            h4
+              strong
+                model.email
+        .col-md-6
+          p
+            i Grupa
+            br
+            h4
+              strong
+                model.team.teamName

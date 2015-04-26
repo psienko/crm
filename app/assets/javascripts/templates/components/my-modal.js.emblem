@@ -9,5 +9,6 @@
         =yield
       .modal-footer
         button.btn.btn-default type="button" data-dismiss="modal" Anuluj
-        button.btn.btn-black{action 'ok'} 
-          submitText
+        unless hideOKButton
+          button.btn.btn-black{action 'ok'} 
+            submitText

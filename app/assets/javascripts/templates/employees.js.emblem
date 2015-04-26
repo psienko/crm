@@ -34,15 +34,20 @@ br
                   td = employee.email
                   td = employee.team.teamName
                   td 
-                    link-to 'employees' person class="btn btn-sm btn-primary" 
+                    button.btn.btn-sm.btn-primary{action 'showModal' 'employees.show' employee}
                       | Szczegóły
                       '
                       i.fa.fa-info-circle
                     '
-                    button.btn.btn-sm.btn-default{action 'showModal' 'people.edit' person} 
-                      | Edytuj
+                    button.btn.btn-sm.btn-black{action 'showModal' 'people.edit' person} 
+                      | Grupa
                       '
-                      i.fa.fa-pencil-square-o
+                      i.fa.fa-sitemap
+                    '
+                    button.btn.btn-sm.btn-warning
+                      i.fa.fa-envelope
+                      '
+                      | Napisz
                     
         .panel-footer
 

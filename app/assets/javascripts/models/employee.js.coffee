@@ -1,5 +1,5 @@
 App.Employee =  DS.Model.extend
-  firstname: DS.attr('string', {defaultValue: "Jan"})
+  firstname: DS.attr('string')
   lastname: DS.attr('string')
   email: DS.attr('string')
   avatar: DS.attr('string')
