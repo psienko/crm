@@ -39,7 +39,7 @@ br
                       '
                       i.fa.fa-info-circle
                     '
-                    button.btn.btn-sm.btn-black{action 'showModal' 'people.edit' person} 
+                    button.btn.btn-sm.btn-black{action 'showModal' 'employees.edit' employee} 
                       | Grupa
                       '
                       i.fa.fa-sitemap

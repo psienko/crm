@@ -1,0 +1,8 @@
+my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitText='Zapisz' hideOKButton=false  
+  div  
+    .panel-body.row
+      .form-group.col-md-12
+        h3 Grupa:
+        h3
+          view Ember.Select             contentBinding="teamsArray"             optionValuePath="content.id" optionLabelPath="content.teamName" selectionBinding="selectedTeam"
+        
