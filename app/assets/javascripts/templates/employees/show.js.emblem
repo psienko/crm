@@ -3,7 +3,7 @@ my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitTex
     .col-md-12
       .text-right
         span title="Dodaj pracownika do grupy"
-          button.btn.btn-black
+          button.btn.btn-black{action 'showModal' 'employees.edit' employee} 
             i.fa.fa-sitemap
             '
             | Dodaj do grupy

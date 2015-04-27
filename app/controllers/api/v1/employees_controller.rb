@@ -32,8 +32,8 @@ class Api::V1::EmployeesController < ApplicationController
 
   private
 
-  def person_params
+  def employee_params
     params.require(:employee)
-    .permit(:firstname, :lastname, :avatar, :email)
+    .permit(:firstname, :lastname, :avatar, :email, :team_id)
   end
 end
