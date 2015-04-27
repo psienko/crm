@@ -1,18 +1,28 @@
-br
 
 .row
-  .col-md-12
-    outlet
-
+  .col-md-12.text-right
+    button.btn.btn-default{action 'showModal' 'teams.new' team} title="Dodaj nową grupę"
+      | Nowa grupa
+      '
+      i.fa.fa-plus-square
+br    
 .row
   each team in controller
     .col-sm-6.col-md-4
       .thumbnail
-        h1
-          i.fa.fa-users.fa-1x
-          '
-          strong
-            team.teamName
+        .row
+          .col-md-6
+            h1
+              i.fa.fa-users.fa-1x
+              '
+              strong
+                team.teamName
+          .col-md-6
+            .text-right
+              button.btn.btn-sm.btn-default{action 'showModal' 'teams.edit' team} title="Edytuj nazwę grupy"
+                      | Edytuj
+                      '
+                      i.fa.fa-pencil-square-o
         .caption
           h3 Członkowie:
           p
@@ -29,9 +39,10 @@ br
                     .col-md-3
                       .pull-right
                         br
-                        button.btn.btn.sm.btn-default.fa.fa-info-circle.fa-lg
+                        button.btn.btn.sm.btn-default.fa.fa-info-circle.fa-lg{action 'showModal' 'employees.show' member} title="Wyświetl informacje o pracowniku"
                         '
-                        button.btn.btn.sm.btn-danger.fa.fa-trash-o.fa-lg
+                        button.btn.btn.sm.btn-danger.fa.fa-trash-o.fa-lg{action 'removeEmployee' member team target=controllers.teamsEdit}  title="Usuń pracownika z tej grupy"
+                        
           p
             a href="#" class="btn btn-black" role="button" Dodaj członka
             '

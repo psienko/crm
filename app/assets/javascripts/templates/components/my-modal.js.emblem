@@ -1,5 +1,5 @@
 .modal.fade
-  .modal-dialog.modal-large 
+  div.modal-dialog class=modalType
     .modal-content.modal-inverse
       .modal-header
         button.close data-dismiss="modal" aria-hidden="true" &times;

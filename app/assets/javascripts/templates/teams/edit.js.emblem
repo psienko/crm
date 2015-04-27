@@ -1,0 +1,17 @@
+my-modal title='Edycja grupy' ok='changeName' close='removeModal' submitText='Zapisz' modalType="modal-small"
+  if isError
+    .alert.alert-danger
+      button.close{ action closeErrorAlert } aria-hidden="true" data-dismiss="alert" type="button" &times
+      h4 Błędne dane!
+  if isSaved
+    .alert.alert-success
+      strong
+        button.close{action closeSuccessAlert} aria-hidden="true" data-dismiss="alert" type="button" &times
+      h4 Zapisano zmiany
+
+  form submit='save' role="form" id="editFormId"
+    .panel
+      h3.form-group
+        label Nazwa
+        br 
+        view Ember.TextField valueBinding=model.teamName class=form-controll   

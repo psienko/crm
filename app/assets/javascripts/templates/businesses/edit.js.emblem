@@ -1,4 +1,4 @@
-my-modal title='Edycja' ok='save' close='removeModal' submitText='Zapisz'
+my-modal title='Edycja' ok='save' close='removeModal' submitText='Zapisz' modalType="modal-large"
   if isError
     .alert.alert-danger
       button.close{ action closeErrorAlert } aria-hidden="true" data-dismiss="alert" type="button" &times

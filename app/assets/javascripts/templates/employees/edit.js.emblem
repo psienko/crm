@@ -1,4 +1,4 @@
-my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitText='Zapisz' hideOKButton=false  
+my-modal title='Zmiana przynależności do grupy' ok='save' close='removeModal' submitText='Zapisz' hideOKButton=false modalType="modal-small"
   div  
     if isError
       .alert.alert-danger
@@ -14,5 +14,5 @@ my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitTex
       .form-group.col-md-12
         h3 Grupa:
         h3
-          view Ember.Select             contentBinding="teamsArray"             optionValuePath="content.id" optionLabelPath="content.teamName" selectionBinding="selectedTeam"
+          view Ember.Select             contentBinding="teamsArray"             optionValuePath="content.id" optionLabelPath="content.teamName" selectionBinding="selectedTeam" prompt="Brak grupy"
         

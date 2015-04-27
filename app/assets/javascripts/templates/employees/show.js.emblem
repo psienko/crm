@@ -1,9 +1,9 @@
-my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitText='Zapisz' hideOKButton=true
+my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitText='Zapisz' hideOKButton=true modalType="modal-large"
   .row
     .col-md-12
       .text-right
         span title="Dodaj pracownika do grupy"
-          button.btn.btn-black{action 'showModal' 'employees.edit' employee} 
+          button.btn.btn-black{action 'showModal' 'employees.edit' model} 
             i.fa.fa-sitemap
             '
             | Dodaj do grupy
