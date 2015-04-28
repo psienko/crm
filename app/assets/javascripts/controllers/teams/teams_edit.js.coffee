@@ -24,7 +24,5 @@ App.TeamsEditController = Ember.ObjectController.extend(
       @set 'isError', false
 
     closeSuccessAlert: ->
-      @set 'isSaved', false
-
-      
+      @set 'isSaved', false      
 )

@@ -1,0 +1,52 @@
+my-modal title='Dodawanie nowego członka grupy' ok='save' close='removeModal' submitText='Zapisz' modalType="modal-large"
+
+  .row
+    .col-md-12
+      ul.nav.nav-tabs
+        li#allTab.active role="presentation"
+          a{action showAll} href="" Wszyscy
+        li#unassignedTab role="presentation"
+          a{action showUnassigned} href="" Nieprzypisani
+      br
+
+    .col-md-12
+      if isError
+        .alert.alert-danger
+          button.close{ action closeErrorAlert } aria-hidden="true" data-dismiss="alert" type="button" &times
+          h4 Błędne dane!
+      if isSaved
+        .alert.alert-success
+          strong
+            button.close{action closeSuccessAlert} aria-hidden="true" data-dismiss="alert" type="button" &times
+          h4 Zapisano zmiany
+
+    .col-md-12
+      .scrollable-500
+        p
+          unless employees
+            .panel.panel-warning
+              h3
+                | Wszyscy pracownicy aktualnie są przypisani do grup.
+              br
+          else        
+            ul.list-group
+              each employee in employees
+                li.list-group-item
+                  .row
+                    .col-md-2.col-sm-1
+                      ==employee.avatarThumb
+                    .col-md-3.col-sm-3
+                      br
+                      employee.firstname
+                    .col-md-3.col-sm-3
+                      br
+                      employee.lastname
+                    .col-md-3.col-sm-3
+                      br
+                      if employee.team
+                        label grupa:
+                        '
+                        employee.team.teamName
+                    .col-md-1.col-sm-1.vcenter
+                      br
+                      button.btn.btn-danger.btn-sm.fa.fa-plus{action add employee}

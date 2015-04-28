@@ -8,6 +8,8 @@ class Api::V1::EmployeesController < ApplicationController
   def index
     if params[:search].eql?('search') && params[:employee].present?
       respond_with Employee.search(params[:employee])
+    elsif params[:team].eql?('unassigned')
+      respond_with Employee.where(team_id: nil)
     else
       respond_with employees
     end

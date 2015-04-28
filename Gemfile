@@ -26,8 +26,6 @@ gem 'mini_magick'
 gem 'faker'
 gem 'rpg' # pesel generator
 gem 'responders', '~> 2.0'
-gem 'decent_exposure'
-gem 'decent_decoration'
 
 gem 'ember-rails'
 gem 'ember-source', '~> 1.9.0'

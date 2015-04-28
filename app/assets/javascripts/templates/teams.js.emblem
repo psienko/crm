@@ -43,10 +43,12 @@ br
                         '
                         button.btn.btn.sm.btn-danger.fa.fa-trash-o.fa-lg{action 'removeEmployee' member team target=controllers.teamsEdit}  title="Usuń pracownika z tej grupy"
                         
-          p
-            a href="#" class="btn btn-black" role="button" Dodaj członka
-            '
-            a href="#" class="btn btn-default" role="button" Button
+          p.text-right
+            button.btn.btn-black{action 'showModal' 'teams.addEmployee' team} title="Dodaj nowego pracownika do grupy"
+              i.fa.fa-user
+              '
+              | Dodaj
+
 
 
   
