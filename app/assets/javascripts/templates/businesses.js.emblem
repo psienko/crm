@@ -79,7 +79,7 @@ unless hideIndex
                       i.fa.fa-pencil-square-o
                     '
                     link-to 'people' class="btn btn-sm btn-black"
-                      | Dodaj umowę
+                      | Grupa obsługująca
                       '
                       i.fa.fa-file
         .panel-footer

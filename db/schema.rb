@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20150422082701) do
+ActiveRecord::Schema.define(version: 20150428103742) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -61,9 +61,11 @@ ActiveRecord::Schema.define(version: 20150422082701) do
     t.string   "customerable_type"
     t.datetime "created_at",        null: false
     t.datetime "updated_at",        null: false
+    t.integer  "team_id"
   end
 
   add_index "customers", ["customerable_id"], name: "index_customers_on_customerable_id", using: :btree
+  add_index "customers", ["team_id"], name: "index_customers_on_team_id", using: :btree
 
   create_table "employees", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -118,5 +120,6 @@ ActiveRecord::Schema.define(version: 20150422082701) do
   add_foreign_key "contracts", "customers"
   add_foreign_key "contracts_products", "contracts"
   add_foreign_key "contracts_products", "products"
+  add_foreign_key "customers", "teams"
   add_foreign_key "employees", "teams"
 end

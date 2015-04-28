@@ -2,7 +2,7 @@ class TeamSerializer < ActiveModel::Serializer
   embed :ids, include: true, embed_in_root: true
   attributes :id, :team_name
   has_many :employees #, as: :customerable#polimorphic: true #embed: :objects, include: true
-
+  has_many :customers
   #def customer
    # object.customer
   #end

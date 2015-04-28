@@ -1,7 +1,9 @@
 class CustomerSerializer < ActiveModel::Serializer
   embed :ids, include: true, embed_in_root: true
   has_one :customerable, polimorfic: true, embed: :ids # , :key => :customerable_id
+  has_one :team
   attributes  :id, :customerable_type, :customerable_id # , :customerable
+  
   #has_one :person, key: :customerable_id
 
   #def person
