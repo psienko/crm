@@ -14,4 +14,4 @@ my-modal title='Nowa grupa' ok='save' close='removeModal' submitText='Zapisz' mo
       h3.form-group
         label Nazwa
         br 
-        view Ember.TextField valueBinding=model.teamName class=form-controll   
+        view Ember.TextField valueBinding=model.teamName class=form-controll id="nameNewTeam"  

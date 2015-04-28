@@ -1,7 +1,7 @@
 
 .row
   .col-md-12.text-right
-    button.btn.btn-default{action 'showModal' 'teams.new' team} title="Dodaj nową grupę"
+    button.btn.btn-default{action 'showModal' 'teams.new' fields} title="Dodaj nową grupę"
       | Nowa grupa
       '
       i.fa.fa-plus-square
