@@ -6,6 +6,7 @@ App.BusinessesNewController = Ember.Controller.extend(
   actions:
     create: ->
       _this = @
+      @set 'fields.contacts', fromHashToString(@get('contactsArray'))
       business = @store.createRecord 'business', @get('fields')
       business.save().then ((business) ->
         _this.transitionToRoute 'business', business
@@ -14,8 +15,8 @@ App.BusinessesNewController = Ember.Controller.extend(
 
     reset: ->
       @set 'fields', {}
-      @set 'contactsFields', []
+      @set 'contactsArray', []
 
     addContact: ->
-      @get('contactsArray').pushObject(@get 'contactFields')
+      @get('contactsArray').pushObject({})
 )

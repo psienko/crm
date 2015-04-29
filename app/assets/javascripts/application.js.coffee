@@ -1,5 +1,6 @@
 #= require jquery
 #= require jquery_ujs
+#= require functions
 #=require bootstrap-sprockets
 #= require handlebars
 #= require ember

@@ -16,4 +16,7 @@ class BusinessSerializer < ActiveModel::Serializer
   #def customerable
    # object.customerable.map { |e| { id: e.id, type: e.type } }
   #end
+  #def contacts
+   # object.contacts.present? ? object.contacts : {first} 
+  #end
 end

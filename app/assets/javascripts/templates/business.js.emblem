@@ -1,5 +1,5 @@
 .row
-  .col-md-5
+  .col-md-4
     .panel.panel-inverse
       .panel-heading
         %h1.panel-title 
@@ -8,7 +8,7 @@
           |Klient - Firma  
       .panel-body
         .row
-          .col-md-4
+          .col-md-6
             p
               i Nazwa firmy
               br
@@ -16,7 +16,7 @@
                 strong 
                   model.companyName
           
-          .col.md-4.col-md-offset-3
+          .col.md-4.col-md-offset-1
             p
               i Adres
               br
@@ -72,6 +72,44 @@
 
 
       .panel-footer
+
+
+  .col-md-4
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-envelope
+          '
+          |Osoby kontaktowe
+      .panel-body
+        if model.contactsArray
+          table.table
+            thead
+              tr
+                th Imię i Nazwisko
+                th Stanowisko
+                th E-mail
+            tbody
+              each contact in model.contactsArray
+                tr
+                  td 
+                    contact.name
+                    '
+                    contact.lastname
+                  td 
+                    contact.position
+                  td 
+                    contact.email
+        else
+          .panel.panel-warning
+            .panel-heading
+              strong
+                | Brak kontaków
+            .panel-body
+              h3
+                | Nie zdefioniowano osób odpowiedzialnych za kontakt po stronie klienta.
+      .panel-footer
+
 
 
   .col-md-4

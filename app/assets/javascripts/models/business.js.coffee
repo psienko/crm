@@ -14,6 +14,8 @@ App.Business = App.Customerable.extend
 
   contactsArray: ( ->
     input = @get 'contacts'
+    unless input
+      return []
     outputTable = []
     hashTable = {}
     end_pos = 0

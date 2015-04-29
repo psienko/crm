@@ -8,6 +8,8 @@ App.BusinessesEditController = Ember.ObjectController.extend(
       @set 'isError', false
       @set 'isSaved', false
       _this = @
+      contacts = fromHashToString(@get('contactsArray'))
+      @set 'model.contacts', contacts
       @get('model').save().then ->
         _this.set 'isSaved', true
       , ->
@@ -20,5 +22,5 @@ App.BusinessesEditController = Ember.ObjectController.extend(
       @set 'isSaved', false
 
     addContact: ->
-      @get('contactsArray').pushObject(@get 'contactFields')
+      @get('contactsArray').pushObject({})
 )
