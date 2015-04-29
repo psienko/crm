@@ -3,7 +3,7 @@ class Api::V1::CustomersController < ApplicationController
 
   before_action :authenticate_employee!
   expose(:customers)
-  expose(:customer)
+  expose(:customer) { Customer.find(params[:id]) }
 
   def index
     respond_with customers
@@ -21,11 +21,12 @@ class Api::V1::CustomersController < ApplicationController
   end
 
   def update
-    respond_with case params[:customer_type]
-                 when 'business' then Business.create(business_params)
-                 when 'person' then  People.create(person_params)
-                 end
-    respond_with customer.update(customer_params)
+    #respond_with case params[:customer_type]
+     #            when 'business' then Business.create(business_params)
+     #            when 'person' then  People.create(person_params)
+     #            end
+    customer.update(customer_params)
+    respond_with customer
   end
 
   def destroy
@@ -34,13 +35,8 @@ class Api::V1::CustomersController < ApplicationController
 
   private
 
-  def business_params
-    params.require(:customer).permit(:name, :industry, :email, :krs, :nip, :regon, :contacts)
-  end
-
-  def person_params
+  def customer_params
     params.require(:customer)
-    .permit(:firstname, :lastname, :pesel, :email, :phone_number, :city,
-            :address, :postcode, :date_of_birth)
+    .permit(:customerable_id, :customerable_type, :team_id)
   end
 end

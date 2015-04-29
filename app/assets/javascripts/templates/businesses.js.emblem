@@ -78,8 +78,14 @@ unless hideIndex
                       '
                       i.fa.fa-pencil-square-o
                     '
-                    link-to 'people' class="btn btn-sm btn-black"
-                      | Grupa obsługująca
-                      '
-                      i.fa.fa-file
+                    if business.customer.team
+                      button.btn.btn-sm.btn-black{action 'showModal' 'businesses.editTeam' business}
+                        | Grupa obsługująca
+                        '
+                        i.fa.fa-file
+                    else
+                      button.btn.btn-sm.btn-danger{action 'showModal' 'businesses.editTeam' business}
+                        | Przypisz grupę
+                        '
+                        i.fa.fa-file
         .panel-footer

@@ -6,6 +6,7 @@ class Employee < ActiveRecord::Base
 
   mount_uploader :avatar, AvatarUploader
   belongs_to :team
+  default_scope { order('lastname ASC', 'firstname ASC') }
 
   def avatar_path(option = nil)
     return avatar.url(option) if avatar.present?

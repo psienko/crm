@@ -65,3 +65,50 @@
                   model.formattedDate
 
       .panel-footer
+
+  .col-md-4
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-users
+          '
+          |Grupa pracowników obsługująca klienta
+      .panel-body
+        if model.customer.team
+          .thumbnail
+            .row
+              .col-md-6
+                h1
+                  i.fa.fa-users.fa-1x
+                  '
+                  strong
+                    model.customer.team.teamName
+              .col-md-6.text-right
+                span title="Napisz wiadomość do grupy"
+                  button.btn.btn-warning
+                    i.fa.fa-envelope
+                    '
+                    | Napisz
+            .caption
+              h3 Członkowie:
+              p
+                ul.list-group
+                  each member in model.customer.team.employees
+                    li.list-group-item
+                      .row
+                        .col-md-9
+                          ==member.avatarThumb
+                          '
+                          member.firstname
+                          '
+                          member.lastname
+        else
+          .panel.panel-warning
+            .panel-heading
+              strong
+                | Brak zdefiniowanej grupy
+            .panel-body
+              h3
+                | Klient nie jest aktualnie obsługiwany przez żaden zespół pracowników.
+      .panel-footer
+          

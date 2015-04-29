@@ -17,7 +17,7 @@ gem 'rails_layout'
 gem "haml-rails", "~> 0.9"
 gem "font-awesome-rails"
 
-gem 'draper', '~> 1.3'
+gem 'draper' #, '~> 1.3'
 
 # authorization
 gem 'devise'
@@ -28,11 +28,11 @@ gem 'rpg' # pesel generator
 gem 'responders', '~> 2.0'
 
 gem 'ember-rails'
-gem 'ember-source', '~> 1.9.0'
+gem 'ember-source', '~> 1.9.0' #, '~> 1.9.0'
 gem 'emblem-rails'
 gem 'momentjs-rails'
 gem 'bootstrap-datepicker-rails'
-gem 'active_model_serializers', '~> 0.8.3'
+gem 'active_model_serializers', '~> 0.8.3' #, '~> 0.8.3'
 
 
 

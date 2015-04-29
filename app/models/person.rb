@@ -17,6 +17,8 @@ class Person < ActiveRecord::Base
   scope :postcode, -> postcode { where postcode: postcode }
   scope :date_of_birth, -> date { where date_of_birth: date }
   
+  default_scope { order('lastname ASC', 'firstname ASC') }
+  
   private
 
   def create_customer

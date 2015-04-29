@@ -21,6 +21,8 @@ class Business < ActiveRecord::Base
   scope :address, -> address { where address: address }
   scope :postcode, -> postcode { where postcode: postcode }
   
+  default_scope { order('company_name ASC') }
+
   private
 
   def create_customer
