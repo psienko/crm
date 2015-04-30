@@ -44,37 +44,6 @@ class << self
   end
 end
 
-20.times do
-  date_of_birth = Faker::Date.birthday
-  Person.create!(
-    firstname: Faker::Name.first_name,
-    lastname: Faker::Name.last_name,
-    email: Faker::Internet.email,
-    pesel: Rpg::Pesel.new(gender: :male, date: date_of_birth).generate,
-    phone_number: Faker::PhoneNumber.phone_number,
-    city: Faker::Address.city,
-    address: Faker::Address.street_address,
-    postcode: Faker::Address.zip_code,
-    date_of_birth: date_of_birth
-    )
-end
-
-20.times do
-  Business.create!(
-    company_name: Faker::Company.name,
-    industry:  industries[Random.rand(3)],
-    email: Faker::Internet.email,
-    krs: 10.times.map{ Random.rand(10).to_s }.reduce(:+),
-    nip: 10.times.map{ Random.rand(10).to_s }.reduce(:+),
-    regon: 10.times.map{ Random.rand(10).to_s }.reduce(:+),
-    contacts: contacts,
-    phone_number: Faker::PhoneNumber.phone_number,
-    city: Faker::Address.city,
-    address: Faker::Address.street_address,
-    postcode: Faker::Address.zip_code
-    )
-end
-
 ec_steps = Employee.count / team_name_list.count
 start = 0
 
@@ -87,3 +56,95 @@ team_name_list.each_with_index do |name, i|
     employees: Employee.where('id>= ? AND id<=?',start, start + ec_steps)
     )
 end
+
+20.times do
+  date_of_birth = Faker::Date.birthday
+  Person.create!(
+    firstname: Faker::Name.first_name,
+    lastname: Faker::Name.last_name,
+    email: Faker::Internet.email,
+    pesel: Rpg::Pesel.new(gender: :male, date: date_of_birth).generate,
+    phone_number: Faker::PhoneNumber.phone_number,
+    city: Faker::Address.city,
+    address: Faker::Address.street_address,
+    postcode: Faker::Address.zip_code,
+    date_of_birth: date_of_birth,
+    team: Team.find(Random.rand(3))
+    )
+end
+
+20.times do
+  Business.create!(
+    company_name: Faker::Company.name,
+    industry:  industries[Random.rand(3)],
+    email: Faker::Internet.email,
+    krs: 10.times.map { Random.rand(10).to_s }.reduce(:+),
+    nip: 10.times.map { Random.rand(10).to_s }.reduce(:+),
+    regon: 10.times.map { Random.rand(10).to_s }.reduce(:+),
+    contacts: contacts,
+    phone_number: Faker::PhoneNumber.phone_number,
+    city: Faker::Address.city,
+    address: Faker::Address.street_address,
+    postcode: Faker::Address.zip_code,
+    team: Team.find(Random.rand(3))
+    )
+end
+
+Employee.all.map do |employee|
+  2.times do
+    customer = Customer.find(Random.rand(40))
+    Message.create!(
+      sender: employee,
+      recipient: customer,
+      subject: Faker::Lorem.sentence(4),
+      body: 'Dzień dobry, <br /> ' << Faker::Lorem.sentence(120),
+      from: employee.email,
+      to: customer.customerable.email,
+      date:  DateTime.now + Random.rand(60).minutes
+    )
+  end
+
+  3.times do
+    employee2 = Employee.find(Random.rand(9))
+    Message.create!(
+      sender: employee2,
+      recipient: employee,
+      subject: Faker::Lorem.sentence(4),
+      body: 'Dzień dobry, <br /> ' << Faker::Lorem.sentence(120),
+      from: employee2.email,
+      to: employee.email,
+      date:  DateTime.now + Random.rand(60).minutes
+    )
+  end
+end
+
+Team.all.map do |team|
+  ids = team.customers.ids
+  3.times do
+    customer = Customer.find(ids[Random.rand(ids.count)])
+    Message.create!(
+      sender: customer,
+      recipient: team,
+      subject: Faker::Lorem.sentence(4),
+      body: 'Dzień dobry, <br /> ' << Faker::Lorem.sentence(120),
+      from: customer.customerable.email,
+      to: team.email,
+      date:  DateTime.now + Random.rand(60).minutes
+    )
+  end
+
+  3.times do
+    customer = Customer.find(ids[Random.rand(ids.count)])
+    Message.create!(
+      sender: team,
+      recipient: customer,
+      subject: Faker::Lorem.sentence(4),
+      body: 'Dzień dobry, <br /> ' << Faker::Lorem.sentence(120),
+      from: employee.email,
+      to: customer.customerable.email,
+      date:  DateTime.now + Random.rand(60).minutes
+    )
+  end
+end
+
+

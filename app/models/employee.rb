@@ -1,11 +1,15 @@
 class Employee < ActiveRecord::Base
+  #belongs_to :message, as: :sender
+  #has_one :message, as: :recipient
+  belongs_to :team
+
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable
 
   mount_uploader :avatar, AvatarUploader
-  belongs_to :team
+  
   default_scope { order('lastname ASC', 'firstname ASC') }
 
   def avatar_path(option = nil)
