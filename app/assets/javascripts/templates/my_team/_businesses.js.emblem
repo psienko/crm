@@ -1,0 +1,23 @@
+table.table
+  thead
+    tr
+      th Nazwa firmy
+      th Branża
+      th E-mail
+      th
+  tbody
+    each customer in myTeam.customers
+      if customer.business
+        tr
+          td 
+            customer.business.companyName
+          td 
+            customer.business.industry
+          td 
+            customer.business.email
+          td
+            link-to 'business' customer.business class="btn btn-sm btn-default" title="Pokaż szczegóły"
+              i.fa.fa-info-circle
+            '
+            button.btn.btn-warning.btn-sm title="Napisz do tego klienta"
+              i.fa.fa-envelope

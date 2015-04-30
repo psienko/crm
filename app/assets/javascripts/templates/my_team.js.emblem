@@ -1,0 +1,84 @@
+.row
+  .col-md-4
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-info-circle 
+          '
+          |Grupa  
+      .panel-body
+        .thumbnail
+          .row
+            .col-md-6
+              h1
+                i.fa.fa-users.fa-1x
+                '
+                strong
+                  myTeam.teamName
+            .col-md-6
+              .text-right
+                button.btn.btn-sm.btn-default{action 'showModal' 'teams.edit' myTeam} title="Edytuj nazwę grupy"
+                  | Edytuj
+                  '
+                  i.fa.fa-pencil-square-o
+          .caption
+            h3 Członkowie:
+            p
+              ul.list-group
+                each member in myTeam.employees
+                  li.list-group-item
+                    .row
+                      .col-md-9
+                        ==member.avatarThumb
+                        '
+                        member.firstname
+                        '
+                        member.lastname
+                      .col-md-3
+                        .pull-right
+                          br
+                          button.btn.btn.sm.btn-default.fa.fa-info-circle.fa-lg{action 'showModal' 'employees.show' member} title="Wyświetl informacje o pracowniku"
+                          '
+                          button.btn.btn.sm.btn-danger.fa.fa-trash-o.fa-lg{action 'removeEmployee' member myTeam target=controllers.teamsEdit}  title="Usuń pracownika z tej grupy"
+                        
+            p.text-right
+              button.btn.btn-black{action 'showModal' 'teams.addEmployee' myTeam} title="Dodaj nowego pracownika do grupy"
+                i.fa.fa-user
+                '
+                | Dodaj
+      .panel-footer
+
+
+
+  .col-md-5
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-users
+          '
+          |Obsługiwani klienci
+      .panel-body
+        if myTeam.customers
+          .row
+            .col-md-12
+              ul.nav.nav-tabs
+                li#peopleTab.active role="presentation"
+                  a{action showPeople} href="" Klienci indywidualni
+                li#businessesTab role="presentation"
+                  a{action showBusinesses} href="" Firmy
+              br
+
+          if isShowedPeople        
+            partial 'my_team/people' 
+          if isShowedBusinesses
+            partial 'my_team/businesses' 
+        else
+          .panel.panel-warning
+            .panel-heading
+              strong
+                | Brak klientów
+            .panel-body
+              h3
+                | Żaden klient nie jest aktualnie przypisany do tej grupy.
+      .panel-footer
+      

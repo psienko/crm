@@ -12,6 +12,7 @@ Rails.application.routes.draw do
       resources :businesses
       resources :employees
       resources :teams
+      resources :users_team
     end
   end
   get '*path', to: 'home#show'

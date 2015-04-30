@@ -1,0 +1,22 @@
+table.table
+  thead
+    tr
+      th Imię i Nazwisko
+      th E-mail
+      th
+  tbody
+    each customer in myTeam.customers
+      if customer.person
+        tr
+          td 
+            customer.person.firstname
+            '
+            customer.person.lastname
+          td 
+            customer.person.email
+          td
+            link-to 'person' customer.person class="btn btn-sm btn-default" title="Pokaż szczegóły"
+              i.fa.fa-info-circle
+            '
+            button.btn.btn-warning.btn-sm title="Napisz do tego klienta"
+              i.fa.fa-envelope

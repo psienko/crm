@@ -2,10 +2,10 @@
   .col-md-12       
     ul.nav.nav-tabs
       li role="presentation"
-        a href="#" 
-          | Dashboard 
+        link-to 'myTeam'
+          | Moja grupa
           '
-          i.fa.fa-tachometer
+          i.fa.fa-briefcase
 
       li role="presentation"
         link-to 'employees' 
@@ -43,12 +43,6 @@
           | Wiadomości
           '
           i.fa.fa-envelope
-
-      li role="presentation"
-        a href="#" 
-          | Moje grupy
-          '
-          i.fa.fa-briefcase
 .row
   .col-lg-12
     br

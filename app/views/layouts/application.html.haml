@@ -16,5 +16,7 @@
           .col-lg-12
             = render 'layouts/messages'
         .row
+          :javascript
+            window.currentEmployeeId = "#{employee_signed_in? ? current_employee.id : 0}";
           = yield
         #ember-app

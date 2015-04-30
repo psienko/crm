@@ -3,6 +3,7 @@ App.Router.reopen
   rootURL: '/'
 
 App.Router.map ->
+  @resource 'myTeam', path: '/'
   @resource 'customers', path: '/customers', ->
     @resource 'businesses', path: '/businesses', ->
       @resource 'business', path: '/:id'

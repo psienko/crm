@@ -7,4 +7,3 @@ App.Team =  DS.Model.extend
   lowerTeamName: ( ->
     @get('teamName').toLowerCase
   ).property('teamName')
-

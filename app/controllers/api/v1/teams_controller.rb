@@ -8,13 +8,15 @@ class Api::V1::TeamsController < ApplicationController
   def index
     if params[:search].eql?('search') && params[:team].present?
       respond_with Team.search(params[:team])
+    elsif params[:my_team].eql?('yes')
+      respond_with current_employee.team
     else
       respond_with teams
     end
   end
 
   def show
-    respond_with teams
+    respond_with team
   end
 
   def create
