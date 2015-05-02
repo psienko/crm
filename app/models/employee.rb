@@ -1,6 +1,6 @@
 class Employee < ActiveRecord::Base
-  #belongs_to :message, as: :sender
-  #has_one :message, as: :recipient
+  has_one :message, as: :sender
+  has_one :message, as: :recipient
   belongs_to :team
 
   # Include default devise modules. Others available are:

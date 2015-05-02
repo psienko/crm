@@ -59,7 +59,7 @@ end
 
 20.times do
   date_of_birth = Faker::Date.birthday
-  Person.create!(
+  person = Person.create!(
     firstname: Faker::Name.first_name,
     lastname: Faker::Name.last_name,
     email: Faker::Internet.email,
@@ -68,13 +68,14 @@ end
     city: Faker::Address.city,
     address: Faker::Address.street_address,
     postcode: Faker::Address.zip_code,
-    date_of_birth: date_of_birth,
-    team: Team.find(Random.rand(3))
+    date_of_birth: date_of_birth
     )
+  person.customer.team = Team.find(Random.rand(3) + 1)
+  person.customer.save!
 end
 
 20.times do
-  Business.create!(
+  business = Business.create!(
     company_name: Faker::Company.name,
     industry:  industries[Random.rand(3)],
     email: Faker::Internet.email,
@@ -85,14 +86,15 @@ end
     phone_number: Faker::PhoneNumber.phone_number,
     city: Faker::Address.city,
     address: Faker::Address.street_address,
-    postcode: Faker::Address.zip_code,
-    team: Team.find(Random.rand(3))
+    postcode: Faker::Address.zip_code
     )
+  business.customer.team = Team.find(Random.rand(3) + 1)
+  business.customer.save!
 end
 
 Employee.all.map do |employee|
   2.times do
-    customer = Customer.find(Random.rand(40))
+    customer = Customer.find(Random.rand(40) + 1)
     Message.create!(
       sender: employee,
       recipient: customer,
@@ -105,7 +107,7 @@ Employee.all.map do |employee|
   end
 
   3.times do
-    employee2 = Employee.find(Random.rand(9))
+    employee2 = Employee.find(Random.rand(9) + 1)
     Message.create!(
       sender: employee2,
       recipient: employee,
@@ -128,7 +130,7 @@ Team.all.map do |team|
       subject: Faker::Lorem.sentence(4),
       body: 'Dzień dobry, <br /> ' << Faker::Lorem.sentence(120),
       from: customer.customerable.email,
-      to: team.email,
+      to: "#{team.team_name}@crm-prz.herokuapp.com",
       date:  DateTime.now + Random.rand(60).minutes
     )
   end
@@ -140,11 +142,9 @@ Team.all.map do |team|
       recipient: customer,
       subject: Faker::Lorem.sentence(4),
       body: 'Dzień dobry, <br /> ' << Faker::Lorem.sentence(120),
-      from: employee.email,
+      from: "#{team.team_name}@crm-prz.herokuapp.com",
       to: customer.customerable.email,
       date:  DateTime.now + Random.rand(60).minutes
     )
   end
 end
-
-
