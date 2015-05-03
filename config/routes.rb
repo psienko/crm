@@ -15,6 +15,8 @@ Rails.application.routes.draw do
       resources :users_team
     end
   end
+  # mount using default path: /email_processor
+  mount_griddler
   get '*path', to: 'home#show'
   root 'home#show'
 

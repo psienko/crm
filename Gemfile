@@ -33,6 +33,8 @@ gem 'emblem-rails'
 gem 'momentjs-rails'
 gem 'bootstrap-datepicker-rails'
 gem 'active_model_serializers', '~> 0.8.3' #, '~> 0.8.3'
+gem 'griddler'
+gem 'griddler-sendgrid'
 
 
 
