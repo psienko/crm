@@ -36,4 +36,15 @@ class Business < ActiveRecord::Base
       memo.send("#{key.underscore}", val)
     end
   end
+
+  def self.find_by_contact(email)
+    business = Business.find_by(email: email)
+    return business if business.present?
+    find_in_contacts(email)
+  end
+
+  def self.find_in_contacts(email)
+    result = where('contacts like ?', "%#{email}%")
+    result.present? ? result : nil
+  end
 end

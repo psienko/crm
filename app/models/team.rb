@@ -5,4 +5,5 @@ class Team < ActiveRecord::Base
   has_one :message, as: :recipient
 
   default_scope { order('team_name ASC') }
+
 end

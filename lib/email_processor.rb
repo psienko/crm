@@ -4,10 +4,6 @@ class EmailProcessor
   end
 
   def process
-    user = User.find_by_email(@email.from[:email])
-    user.posts.create!(
-      subject: @email.subject,
-      body: @email.body
-    )
+    EmailReceiver.call(@email)
   end
 end
