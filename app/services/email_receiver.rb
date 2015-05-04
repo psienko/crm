@@ -10,7 +10,6 @@ class EmailReceiver
   end
 
   def call
-    binding.pry
     customer = check_and_get_sender
     return false unless customer.present?
     recipients = check_and_get_recipient_for(customer)
