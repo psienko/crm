@@ -44,7 +44,7 @@ br
                       '
                       i.fa.fa-sitemap
                     '
-                    button.btn.btn-sm.btn-warning
+                    button.btn.btn-sm.btn-warning{action 'showModal' 'messageModal' employee} 
                       i.fa.fa-envelope
                       '
                       | Napisz

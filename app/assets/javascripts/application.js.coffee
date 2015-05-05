@@ -4,6 +4,8 @@
 #=require bootstrap-sprockets
 #= require handlebars
 #= require ember
+#= require bootstrap-wysihtml5
+#= require bootstrap-wysihtml5/locales/pl-PL
 #= require ember-data
 #= require bootstrap-datepicker
 #= require moment

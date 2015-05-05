@@ -16,6 +16,7 @@ gem 'bootstrap-sass'
 gem 'rails_layout'
 gem "haml-rails", "~> 0.9"
 gem "font-awesome-rails"
+gem 'bootstrap-wysihtml5-rails'
 
 gem 'draper' #, '~> 1.3'
 

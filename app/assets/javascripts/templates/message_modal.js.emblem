@@ -1,0 +1,25 @@
+my-modal title='Wiadomość' ok='save' close='removeModal' submitText='Zapisz' hideOKButton=false modalType="modal-large"
+  div  
+    if isError
+      .alert.alert-danger
+        button.close{ action closeErrorAlert } aria-hidden="true" data-dismiss="alert" type="button" &times
+        h4 Błędne dane!
+    if isSaved
+      .alert.alert-success
+        strong
+          button.close{action closeSuccessAlert} aria-hidden="true" data-dismiss="alert" type="button" &times
+        h4 Zapisano zmiany
+    
+    .panel-body
+      .row
+        .col-md-12.col-sm-8.email-box
+          .form-group
+            label Do: 
+            view Ember.TextField value=model.fullName class="form-controll wysihtml5-subject" placeholder="Temat" disabled=true
+
+          .form-group
+            label Temat: 
+            view Ember.TextField value=fields.subject class="form-controll full-row wysihtml5-subject" placeholder="Temat"
+          
+          view Ember.TextArea  id="some-textarea" value=fields.body class='wysihtml5 wysihtml5-sandbox full-row' placeholder="Wprowadź wiadomość ..."
+        

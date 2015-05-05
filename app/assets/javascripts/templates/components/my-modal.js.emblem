@@ -1,8 +1,8 @@
-.modal.fade
+#my-modal.modal.fade
   div.modal-dialog class=modalType
     .modal-content.modal-inverse
       .modal-header
-        button.close data-dismiss="modal" aria-hidden="true" &times;
+        button.close.ember-modal data-dismiss="modal" aria-hidden="true" &times;
         h4.modal-title
           =title
       .modal-body

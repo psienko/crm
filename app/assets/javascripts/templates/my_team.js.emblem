@@ -81,4 +81,10 @@
               h3
                 | Żaden klient nie jest aktualnie przypisany do tej grupy.
       .panel-footer
+
+.row
+  .col-md-10.email-box
+    textarea id="some-textarea" class='wysihtml5 wysihtml5-sandbox full-row' placeholder="Wprowadź wiadomość ..."
+
+    
       

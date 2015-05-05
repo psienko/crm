@@ -7,3 +7,7 @@ App.Employee =  DS.Model.extend
   currentSignInAt: DS.attr('date')
   avatarThumb: DS.attr('string')
   team: DS.belongsTo('team')
+
+  fullName: ( ->
+    @get('firstname') + ' ' + @get('lastname') 
+  ).property('firstname', 'lastname')
