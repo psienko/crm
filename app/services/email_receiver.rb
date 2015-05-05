@@ -10,10 +10,12 @@ class EmailReceiver
   end
 
   def call
-    customer = check_and_get_sender
-    return false unless customer.present?
-    recipients = check_and_get_recipient_for(customer)
+    sender = check_and_get_sender
+    return false unless sender.present?
+    recipients = check_and_get_recipient_for(sender)
     return false unless recipients.present?
+    MessageCreator.call(email, sender, recipients)
+
   end
 
   private
