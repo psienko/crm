@@ -1,0 +1,26 @@
+.message {
+  border: 1px solid black;  
+}
+
+.message-subject-panel {
+  width: 100%;
+  height: 40px;
+  border: 2px solid grey;
+  background-color: #444444;
+  color: white;
+}
+
+.collapsed-message{
+    cursor: pointer;
+    cursor: hand;
+    :hover {
+      font-size: larger;
+    }
+  }
+
+.message-subject-icon {
+  width: 40px;
+  margin-right: 10px;
+  margin-left: 5px;
+  float: left;
+}

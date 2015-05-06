@@ -15,3 +15,4 @@ App.Router.map ->
       @route 'search'
   @resource 'employees', path: '/employees'
   @resource 'teams', path: '/teams'
+  @resource 'messages', path: '/messages'

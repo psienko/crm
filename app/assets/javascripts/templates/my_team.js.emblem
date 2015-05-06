@@ -82,6 +82,35 @@
                 | Żaden klient nie jest aktualnie przypisany do tej grupy.
       .panel-footer
 
+
+/ ************************************* MESSAGES ***************************
+
+.row
+  .col-md-10
+    .panel.panel-inverse
+      .panel-heading
+        %h1.panel-title 
+          i.fa.fa-inbox 
+          '
+          |Wiadomości  
+      .row.panel-body
+        each message in myTeam.receivedMessages
+          .col-md-12.message
+            .row
+              .col-md-12.panel-heading.message-subject-panel.collapsed-message
+                .row
+                  .col-md-3
+                    .message-subject-icon
+                      ==message.sender.icon
+                    message.sender.fullName
+                  .col-md-7
+                    label Temat
+                    '
+                    '
+                    message.subject
+                  .col-md-2.text-right
+                    message.formattedDate
+
 .row
   .col-md-10.email-box
     textarea id="some-textarea" class='wysihtml5 wysihtml5-sandbox full-row' placeholder="Wprowadź wiadomość ..."

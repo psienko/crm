@@ -1,6 +1,6 @@
 class Customer < ActiveRecord::Base
-  has_one :message, as: :sender
-  has_one :message, as: :recipient
+  has_many :sent_messages, as: :sender, class_name: 'Message'
+  has_many :received_messages, as: :recipient, class_name: 'Message'
   belongs_to :customerable, polymorphic: true, dependent: :destroy
   belongs_to :team
 

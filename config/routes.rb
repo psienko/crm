@@ -13,6 +13,7 @@ Rails.application.routes.draw do
       resources :employees
       resources :teams
       resources :users_team
+      resources :messages
     end
   end
   # mount using default path: /email_processor

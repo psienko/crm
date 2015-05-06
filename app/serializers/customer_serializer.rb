@@ -5,6 +5,8 @@ class CustomerSerializer < ActiveModel::Serializer
   attributes  :id, :customerable_type, :customerable_id, :person_id, :business_id # , :customerable
   has_one :person
   has_one :business
+  has_many :sent_messages, as: :sender
+  has_many :received_messages, as: :recipient
   
   def person_id
     if object.customerable.present? && object.customerable_type == 'Person'
