@@ -97,7 +97,7 @@
         each message in myTeam.receivedMessages
           .col-md-12.message
             .row
-              .col-md-12.panel-heading.message-subject-panel.collapsed-message
+              .col-md-12.panel-heading.message-subject-panel.collapsed-message{action showhide message.htmlId} id=message.htmlId
                 .row
                   .col-md-3
                     .message-subject-icon
@@ -110,10 +110,31 @@
                     message.subject
                   .col-md-2.text-right
                     message.formattedDate
+            .row.hide class=message.htmlId
+              .row
+                .col-md-5
+                  small
+                    p.text-info
+                      b Od:
+                      '
+                      a{action goto message.sender} href=""
+                        |<
+                        message.from
+                        '
+                        |(
+                        message.sender.fullName
+                        |)
+                        |>
+                      br
+                      b Do:
+                      '
+                      message.to
+
+              .col-md-12.panel-body
+                ==message.body
 
 .row
   .col-md-10.email-box
     textarea id="some-textarea" class='wysihtml5 wysihtml5-sandbox full-row' placeholder="Wprowadź wiadomość ..."
-
     
       

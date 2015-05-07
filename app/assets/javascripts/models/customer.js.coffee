@@ -18,6 +18,10 @@ App.Customer = DS.Model.extend({
       return "<i class='fa fa-bank fa-lg'></i>"
   ).property()
 
+  type: ( ->
+    @get 'customerableType'
+  ).property('customerableType')
+
   customerable: ( ->
     if @get('customerableType') == 'Person'
       return @get('person')

@@ -20,3 +20,4 @@ window.App = Ember.Application.create(
 )
 
 $('.dropdown-toggle').dropdown()
+

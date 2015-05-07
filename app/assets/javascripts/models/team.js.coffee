@@ -7,6 +7,7 @@ App.Team =  DS.Model.extend
   sentMessages: DS.hasMany('sentMessage')
 
   icon: DS.attr('icon', {defaultValue: "<i class='fa fa-envelope fa-lg'></i>"})
+  type: DS.attr('type', {defaultValue: 'Team'})
 
   lowerTeamName: ( ->
     @get('teamName').toLowerCase

@@ -22,4 +22,22 @@ App.MyTeamController = Ember.ObjectController.extend(
       @set 'isShowedBusinesses', true
       $( "#peopleTab" ).removeClass( "active" )
       $( "#businessesTab" ).addClass( "active" )
+
+    showhide: (htmlId)->
+      htmlClass = "."+htmlId
+      messageDiv = $(htmlClass)
+      if messageDiv.hasClass('hide')
+        messageDiv.removeClass('hide')
+      else
+        messageDiv.addClass('hide')
+
+    goto: (sender) ->
+      if sender.get('type') == 'Business'
+        @transitionToRoute("business", sender.get('customerable'))
+        return
+      if sender.get('type') == 'Person'
+        @transitionToRoute("person", sender.get('customerable'))
+        return
+      if sender.get('type') == 'Employee'
+        @get('controllers.application').send('showModal', 'employees.show', sender)
 )

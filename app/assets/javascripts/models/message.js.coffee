@@ -16,6 +16,10 @@ App.Message = DS.Model.extend({
     moment(@get('date')).format 'DD/MM/YYYY hh:mm'
   ).property('date')
 
+  htmlId: ( ->
+    "messageId-"+ @get('id')
+  ).property('id')
+
   recipient: ( ->
     if @get('recipientType') == 'Team'
       return @store.find('team', @get('recipientId'))
