@@ -1,5 +1,5 @@
 App.MyTeamController = Ember.ObjectController.extend(
-  needs: ['application', 'teams', 'teamsEdit']
+  needs: ['application', 'teams', 'teamsEdit', 'messageSender']
   isShowedPeople: true
   isShowedBusinesses: false
 
@@ -40,4 +40,18 @@ App.MyTeamController = Ember.ObjectController.extend(
         return
       if sender.get('type') == 'Employee'
         @get('controllers.application').send('showModal', 'employees.show', sender)
+
+    showReplyEditor: (message) -> 
+      htmlClass = "."+message.get('htmlId')
+      editorDiv = $(htmlClass).find('.email-box')
+      if editorDiv.hasClass('hide')
+        editorDiv.removeClass('hide')
+        $('.send-panel').removeClass('hide')
+        editorDiv.append("<textarea class='wysihtml5 wysihtml5-sandbox full-row' placeholder='Wprowadź wiadomość ...'></textarea>")
+        wysihtml = editorDiv.find('.wysihtml5')
+        wysihtml.wysihtml5()
+      else
+        editorDiv.addClass('hide')
+        $('.send-panel').addClass('hide')
+        editorDiv.empty()
 )

@@ -1,5 +1,5 @@
 .row
-  .col-md-4
+  .col-md-5
     .panel.panel-inverse
       .panel-heading
         %h1.panel-title 
@@ -50,7 +50,7 @@
 
 
 
-  .col-md-5
+  .col-md-7
     .panel.panel-inverse
       .panel-heading
         %h1.panel-title 
@@ -86,7 +86,7 @@
 / ************************************* MESSAGES ***************************
 
 .row
-  .col-md-10
+  .col-md-12
     .panel.panel-inverse
       .panel-heading
         %h1.panel-title 
@@ -129,12 +129,20 @@
                       b Do:
                       '
                       message.to
+                .col-md-7
+                  .text-right
+                    button.btn.btn-large.btn-black.fa.fa-reply.la-lg.reply-button{action 'showReplyEditor' message} title="Odpowiedz"
 
               .col-md-12.panel-body
                 ==message.body
 
-.row
-  .col-md-10.email-box
-    textarea id="some-textarea" class='wysihtml5 wysihtml5-sandbox full-row' placeholder="Wprowadź wiadomość ..."
-    
+                .row
+                  .col-md-12.email-box.hide
+                  .col-md-12.send-panel.hide
+                    .text-right
+                      button.btn.btn-lg.btn-black{action 'sendReply' message 'received' target='controllers.messageSender'}
+                        i.fa.fa-paper-plane.fa-lg
+                        '
+                        | Wyślij
+
       

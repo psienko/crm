@@ -10,7 +10,7 @@ App.Message = DS.Model.extend({
   date: DS.attr('date')
   messageId: DS.attr('string')
   inReplyTo: DS.attr('string')
-  References: DS.attr('string')
+  references: DS.attr('string')
 
   formattedDate: ( ->
     moment(@get('date')).format 'DD/MM/YYYY hh:mm'

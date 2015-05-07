@@ -1,4 +1,4 @@
-class Api::V1::MessagesController < ApplicationController
+class Api::V1::ReceivedMessagesController < ApplicationController
   respond_to :json
 
   before_action :authenticate_employee!
@@ -34,18 +34,6 @@ class Api::V1::MessagesController < ApplicationController
 
   def team_params
     params.require(:message)
-    .permit(:recipient_id,
-            :recipient_type,
-            :sender_id,
-            :sender_type,
-            :subject,
-            :body,
-            :from,
-            :to,
-            :date,
-            :message_id,
-            :in_reply_to,
-            :references
-    )
+    .permit(:subject, :body, :recipient)
   end
 end
