@@ -11,8 +11,8 @@ App.Employee =  DS.Model.extend( {
   receivedMessages: DS.hasMany('receivedMessage')
   sentMessages: DS.hasMany('sentMessage')
 
-  icon: DS.attr('type', {defaultValue: "<i class='fa fa-envelope fa-lg'></i>"})
-  type: DS.attr('type', {defaultValue: 'Employee'})
+  icon: "<i class='fa fa-envelope fa-lg'></i>"
+  type: "Employee"
 
   fullName: ( ->
     @get('firstname') + ' ' + @get('lastname') 

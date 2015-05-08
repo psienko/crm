@@ -10,19 +10,29 @@ App.MessageSenderController = Ember.Controller.extend(
       body = $(classId).find('textarea').val()
       newMessage = message
       if type == 'received'
-        newMessage.set 'recipient', message.get('sender')
+        newMessage.set 'recipientId', message.get('senderId')
+        newMessage.set 'recipientType', message.get('senderType')
+        if message.get('recipientType') == 'Team' || message.get('recipientType') == 'Customer'
+          newMessage.set 'senderId', @get 'userInfo.team.id'
+          newMessage.set 'senderType', "Team"
+        if message.get('recipient.type') == 'Employee'
+          newMessage.set 'senderId', @get 'userInfo.id'
+          newMessage.set 'senderType', "Employee"
       newMessage.set 'body', body
-      if message.get('recipient.type') == 'Team'
-        who = 'Team'
-      if message.get('recipient.type') == 'Employee'
-        who = 'Employee'
-      if message.get('recipient.type') == 'Person' || message.get('recipient.type') == 'Business'
-        who = 'Customer'
-      delete newMessage.id
-      newMessage.set 'sender', ''
-      subject = 'Re:'+message.get('subject')
-      newMessage.set('subject', subject)
-      message = {"recipientId": newMessage.get('recipientId'), "recipientType": newMessage.get('recipientType'), "senderId": newMessage.get('senderId'), "senderType": newMessage.get('senderType'), "subject": newMessage.get('subject'), "body": newMessage.get('body'), "from": newMessage.get('from'), "to": newMessage.get('to'), "date": '', "messageId": newMessage.get('messageId'), "inReplyTo": newMessage.get('inReplyTo'), "references": newMessage.get('references')}
+      if message.get('references') == null
+        references = ''
+      else
+        references = message.get('references')
+
+      if message.get('inReplyTo') == null
+        inReplyTo = ''
+      else
+        inReplyTo = message.get('inReplyTo')  
+
+      newMessage.set 'references', references.concat(inReplyTo)
+      newMessage.set 'inReplyTo', message.get('messageId')
+      newMessage.set('subject', 'Re:'+message.get('subject'))
+      message = {"recipientId": newMessage.get('recipientId'), "recipientType": newMessage.get('recipientType'), "senderId": newMessage.get('senderId'), "senderType": newMessage.get('senderType'), "subject": newMessage.get('subject'), "body": newMessage.get('body'), "from": '', "to": '', "date": '', "messageId": newMessage.get('messageId'), "inReplyTo": newMessage.get('inReplyTo'), "references": newMessage.get('references')}
       _this = @
       message = @store.createRecord 'message' , message
       message.save().then ((person) ->
