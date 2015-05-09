@@ -133,6 +133,22 @@
                   .text-right
                     button.btn.btn-large.btn-black.fa.fa-reply.la-lg.reply-button{action 'showReplyEditor' message} title="Odpowiedz"
 
+              .col-md-12
+                .col-md-1
+                .col-md-10
+                  .error-info.hide
+                    .alert.alert-danger
+                      button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+                      h5 
+                        b 
+                          |Nastąpił nieoczekiwany błąd, wiadomość nie została wysłana. 
+                        |Proszę spróbować później
+                  .success-info.hide
+                    .alert.alert-success
+                      strong
+                        button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+                      h4 Wysłano
+
               .col-md-12.panel-body
                 ==message.body
 

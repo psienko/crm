@@ -1,6 +1,6 @@
 class Api::V1::MessagesController < ApplicationController
   respond_to :json
-
+  before_action :verify_sender, only: :create
   before_action :authenticate_employee!
   expose(:message) { Message.find(params[:id]) }
 
@@ -19,20 +19,33 @@ class Api::V1::MessagesController < ApplicationController
   end
 
   def create
-    binding.pry
-    #respond_with :api, :v1, Team.create(team_params)
+    message = SourceAndTargetEmailDeterminer.call(Message.new(message_params))
+    message = MessageCreator.call(MessageAsGriddler.new(message),
+                                  message.sender, message.recipient)
+    if message.recipient_type == 'Customer'
+      MessageSendAndUpdateJob.perform_later(message.id)
+    end
+    message.date = DateTime.now
+    respond_with :api, :v1, message
   end
 
-  def update
-  end
-
-  def destroy
-    respond_with message.destroy
-  end
 
   private
 
-  def team_params
+  def verify_sender
+    case message_params[:sender_type]
+    when 'Employee'
+      if message_params[:sender_id] != current_employee.id
+        respond_with :api, :v1, status: :unprocessable_entity
+      end
+    when 'Team'
+      if message_params[:sender_id] != current_employee.team.id
+        respond_with  :api, :v1, status: :unprocessable_entity
+      end
+    end
+  end
+
+  def message_params
     params.require(:message)
     .permit(:recipient_id,
             :recipient_type,

@@ -10,4 +10,12 @@ class Customer < ActiveRecord::Base
     business = Business.find_by_contact(email)
     business[0].customer if business.present?
   end
+
+  def person?
+    customerable.class.name == 'Person'
+  end
+
+  def business?
+    customerable.class.name == 'Business'
+  end
 end

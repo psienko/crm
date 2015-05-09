@@ -36,7 +36,9 @@ gem 'bootstrap-datepicker-rails'
 gem 'active_model_serializers', '~> 0.8.3' #, '~> 0.8.3'
 gem 'griddler'
 gem 'griddler-sendgrid'
-
+gem 'sidekiq'
+gem 'sinatra', require: false
+gem 'slim'
 
 
 group :development, :test do

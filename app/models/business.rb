@@ -23,15 +23,9 @@ class Business < ActiveRecord::Base
   
   default_scope { order('company_name ASC') }
 
-  private
-
-  def create_customer
-    Customer.create(customerable: self)
-  end
-
   def self.search(params)
     business = Business.where(nil)
-    params.map{ |key, val| params.delete(key) unless val.present? }
+    params.map { |key, val| params.delete(key) unless val.present? }
     params.reduce(business) do |memo, (key, val)|
       memo.send("#{key.underscore}", val)
     end
@@ -46,5 +40,17 @@ class Business < ActiveRecord::Base
   def self.find_in_contacts(email)
     result = where('contacts like ?', "%#{email}%")
     result.present? ? result : nil
+  end
+
+  def build_recipient_addresses
+    addresses = contacts.present? ? eval(contacts).map { |contact| contact[:email] } : []
+    addresses << email if email.present?
+    addresses.join(', ')
+  end
+
+  private
+
+  def create_customer
+    Customer.create(customerable: self)
   end
 end

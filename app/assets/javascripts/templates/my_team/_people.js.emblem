@@ -16,7 +16,7 @@ table.table
             customer.person.email
           td
             link-to 'person' customer.person class="btn btn-sm btn-default" title="Pokaż szczegóły"
-              i.fa.fa-info-circle
+              i.fa.fa-info-circle.fa-lg
             '
             button.btn.btn-warning.btn-sm title="Napisz do tego klienta"
-              i.fa.fa-envelope
+              i.fa.fa-envelope.fa-lg

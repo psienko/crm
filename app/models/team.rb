@@ -6,4 +6,7 @@ class Team < ActiveRecord::Base
 
   default_scope { order('team_name ASC') }
 
+  def build_email_address
+    "#{team_name}@#{EMAIL_HOST}"
+  end
 end

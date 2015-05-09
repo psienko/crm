@@ -1,3 +1,5 @@
+require 'sidekiq/web'
+
 Rails.application.routes.draw do
   devise_for :employees
   as :employee do
@@ -14,9 +16,9 @@ Rails.application.routes.draw do
       resources :teams
       resources :users_team
       resources :messages
-      resources :received_messages
     end
   end
+  mount Sidekiq::Web, at: "/sidekiq"
   # mount using default path: /email_processor
   mount_griddler
   get '*path', to: 'home#show'
