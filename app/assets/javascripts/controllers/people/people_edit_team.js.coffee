@@ -1,13 +1,18 @@
 App.PeopleEditTeamController = Ember.ObjectController.extend(
   isSaved: false
   isError: false
+  isLoading: false
   
   selectedTeam: ( -> 
     @get('model.customer.team')
   ).property()
 
-  teamsArray: ( -> 
-    @get('store').all('team')
+  teamsArray: ( ->
+    _this = @
+    @set 'isLoading', true
+    (teams = @store.findAll 'team').finally ->
+                _this.set 'isLoading', false
+    teams
   ).property()
 
   modalDidChanged: (->

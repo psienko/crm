@@ -63,9 +63,9 @@
             .col-md-12
               ul.nav.nav-tabs
                 li#peopleTab.active role="presentation"
-                  a{action showPeople} href="" Klienci indywidualni
+                  a{action 'showPeople'} href="" Klienci indywidualni
                 li#businessesTab role="presentation"
-                  a{action showBusinesses} href="" Firmy
+                  a{action 'showBusinesses'} href="" Firmy
               br
 
           if isShowedPeople        

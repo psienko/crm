@@ -1,13 +1,20 @@
 App.EmployeesEditController = Ember.ObjectController.extend(
   isSaved: false
   isError: false
+  isLoading: false
 
-  selectedTeam: ( -> 
+
+  selectedTeam: ( ->
     @get('model.team')
   ).property()
 
   teamsArray: ( ->
-    @store.findAll 'team'
+    _this = @
+    @set 'isLoading', true
+    #@store.findAll 'team'
+    (teams = @store.findAll 'team').finally ->
+                _this.set 'isLoading', false
+    teams
   ).property()
 
   modalDidChanged: (->

@@ -13,7 +13,8 @@ my-modal title='Grupy pracowników' ok='save' close='removeModal' submitText='Za
   .panel-body.row
     .form-group.col-md-12
       h3 Grupa:
-      h3
-        view Ember.Select             contentBinding="teamsArray"             optionValuePath="content.id" optionLabelPath="content.teamName" selectionBinding="selectedTeam" prompt="Brak grupy"
-
-  .panel.paner-danger
+      unless isLoading
+        h3
+          view Ember.Select             contentBinding="teamsArray"             optionValuePath="content.id" optionLabelPath="content.teamName" selectionBinding="selectedTeam" prompt="Brak grupy"
+      else
+        span.loading.style-1
