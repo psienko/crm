@@ -17,4 +17,11 @@ App.Employee =  DS.Model.extend( {
   fullName: ( ->
     @get('firstname') + ' ' + @get('lastname') 
   ).property('firstname', 'lastname')
+
+  hasTeam: ( ->
+    if @get('team')
+      true
+    else 
+      false
+  ).property('team')
 })

@@ -5,9 +5,24 @@ App.TeamsAddEmployeeController = Ember.ObjectController.extend(
   all: true
   unassigned: false
 
-  employees: ( -> 
-    @get('store').find('employee')
+  loading: false
+
+  employeesSaved: ( ->
+    @get('store').all('employee')
   ).property()
+
+  employees: ( -> 
+    _this = @
+    employees = ''
+    @set 'loading', true
+    (employees = @get('store').find('employee')).finally ->
+                _this.set 'loading', false
+    employees
+  ).property()
+  
+  unassignedEmployees: ( -> 
+    @get('employeesSaved').filterProperty('hasTeam', false)
+  ).property('employeesSaved.@each.hasTeam')
 
 
   actions:
@@ -16,14 +31,14 @@ App.TeamsAddEmployeeController = Ember.ObjectController.extend(
       @set 'unassigned', false
       $( "#allTab" ).addClass( "active" )
       $( "#unassignedTab" ).removeClass( "active" )
-      @set 'employees', @get('store').find('employee')
+      @set 'employees', @get('store').all('employee')
 
     showUnassigned: ->
       @set 'all', false
       @set 'unassigned', true
       $( "#unassignedTab" ).addClass( "active" )
       $( "#allTab" ).removeClass( "active" )
-      @set 'employees', @get('store').find('employee', {team: 'unassigned'})
+      @set 'employees', @get 'unassignedEmployees'
 
 
     add: (employee) ->
@@ -34,6 +49,8 @@ App.TeamsAddEmployeeController = Ember.ObjectController.extend(
         employee.set 'team', @get('model')
         _this = @
         employee.save().then ->
+          if _this.get 'unassigned'
+           _this.set 'employees', _this.get 'unassignedEmployees' 
           _this.set 'isSaved', true 
         , ->
           _this.set 'isError', true
