@@ -94,7 +94,21 @@
           '
           |Wiadomości  
       .row.panel-body
-        each message in myTeam.receivedMessages
+        .col-md-12
+          ul.nav.nav-tabs
+            li#receivedMessages.active role="presentation"
+              a{action 'showReceived'} href="" 
+                i.fa.fa-share
+                '
+                |Odebrane
+            li#sentMessages role="presentation"
+              a{action 'showSent'} href="" 
+                i.fa.fa-reply
+                '
+                |Wysłane
+          br
+
+        each message in displaiedMessages
           .col-md-12.message
             .row
               .col-md-12.panel-heading.message-subject-panel.collapsed-message{action showhide message.htmlId} id=message.htmlId

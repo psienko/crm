@@ -1,14 +1,27 @@
 App.MyTeamController = Ember.ObjectController.extend(
   needs: ['application', 'teams', 'teamsEdit', 'messageSender']
+  init: ->
+    @set 'controllers.application.userInfo', @store.find('employee', window.currentEmployeeId)
+    return
+
   isShowedPeople: true
   isShowedBusinesses: false
+  isShowedSent: false
+  isShowedReceived: true
 
   userInfo: Ember.computed.alias('controllers.application.userInfo')
   myTeam: Ember.computed.alias('controllers.application.userInfo.team')
 
-  init: ->
-    @set 'controllers.application.userInfo', @store.find('employee', window.currentEmployeeId)
-    return
+  displaiedMessages: ( ->
+    @get 'myTeam.receivedMessages'
+  ).property('myTeam')
+
+  messagesTypeDidChanged: (->
+    if @get 'isShowedSent'
+     @set 'displaiedMessages', @get 'myTeam.sentMessages'
+    if @get 'isShowedReceived'
+     @set 'displaiedMessages', @get 'myTeam.receivedMessages'
+    ).observes('isShowedSent', 'isShowedReceived')
 
   actions:
     showPeople: ->
@@ -54,4 +67,16 @@ App.MyTeamController = Ember.ObjectController.extend(
         editorDiv.addClass('hide')
         editorDiv.next('.send-panel').addClass('hide')
         editorDiv.empty()
+
+    showReceived: ->
+      @set 'isShowedSent', false
+      @set 'isShowedReceived', true
+      $( "#sentMessages" ).removeClass( "active" )
+      $( "#receivedMessages" ).addClass( "active" )
+
+    showSent: ->
+      @set 'isShowedSent', true
+      @set 'isShowedReceived', false
+      $( "#sentMessages" ).addClass( "active" )
+      $( "#receivedMessages" ).removeClass( "active" )
 )
