@@ -8,8 +8,8 @@ App.Employee =  DS.Model.extend( {
   avatarThumb: DS.attr('string')
 
   team: DS.belongsTo('team')
-  receivedMessages: DS.hasMany('receivedMessage')
-  sentMessages: DS.hasMany('sentMessage')
+  receivedMessages: DS.hasMany('receivedMessage', {async: true})
+  sentMessages: DS.hasMany('sentMessage', {async: true})
 
   icon: "<i class='fa fa-envelope fa-lg'></i>"
   type: "Employee"

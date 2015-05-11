@@ -16,6 +16,8 @@ Rails.application.routes.draw do
       resources :teams
       resources :users_team
       resources :messages
+      resources :sent_messages
+      resources :received_messages
     end
   end
   mount Sidekiq::Web, at: "/sidekiq"

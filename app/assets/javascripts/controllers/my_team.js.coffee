@@ -10,18 +10,27 @@ App.MyTeamController = Ember.ObjectController.extend(
   isShowedReceived: true
 
   userInfo: Ember.computed.alias('controllers.application.userInfo')
-  myTeam: Ember.computed.alias('controllers.application.userInfo.team')
+  myTeam: (-> @get 'team').property() 
 
   displaiedMessages: ( ->
-    @get 'myTeam.receivedMessages'
-  ).property('myTeam')
+    if @get 'isShowedReceived' 
+      return @get 'inboundMessages'
+    if @get 'isShowedSent'
+      return @get 'outboundMessages' 
+  ).property('isShowedSent', 'isShowedSent')
 
   messagesTypeDidChanged: (->
     if @get 'isShowedSent'
      @set 'displaiedMessages', @get 'myTeam.sentMessages'
     if @get 'isShowedReceived'
      @set 'displaiedMessages', @get 'myTeam.receivedMessages'
-    ).observes('isShowedSent', 'isShowedReceived')
+  ).observes('isShowedSent', 'isShowedReceived')
+
+  messagesDidSent: (->
+    @set 'displaiedMessages', @get 'outboundMessages'
+  ).observes('content.outboundMessages')
+
+ 
 
   actions:
     showPeople: ->
@@ -69,12 +78,14 @@ App.MyTeamController = Ember.ObjectController.extend(
         editorDiv.empty()
 
     showReceived: ->
+      @set 'inboundMessages', @store.find 'receivedMessage'
       @set 'isShowedSent', false
       @set 'isShowedReceived', true
       $( "#sentMessages" ).removeClass( "active" )
       $( "#receivedMessages" ).addClass( "active" )
 
     showSent: ->
+      @set 'outboundMessages', @store.find 'sentMessage'
       @set 'isShowedSent', true
       @set 'isShowedReceived', false
       $( "#sentMessages" ).addClass( "active" )

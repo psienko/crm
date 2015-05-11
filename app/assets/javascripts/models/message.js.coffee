@@ -13,7 +13,7 @@ App.Message = DS.Model.extend({
   references: DS.attr('string')
 
   formattedDate: ( ->
-    moment(@get('date')).format 'DD/MM/YYYY hh:mm'
+    moment(@get('date')).format 'DD/MM/YYYY HH:mm'
   ).property('date')
 
   htmlId: ( ->

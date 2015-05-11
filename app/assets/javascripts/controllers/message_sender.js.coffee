@@ -4,6 +4,7 @@ App.MessageSenderController = Ember.Controller.extend(
   isError: false
 
   userInfo: Ember.computed.alias('controllers.application.userInfo')
+  userInfoId: Ember.computed.alias('controllers.application.userInfo.id')
 
   actions:
     sendReply: (message, type)->
@@ -41,7 +42,7 @@ App.MessageSenderController = Ember.Controller.extend(
       message = {"recipientId": recipientId, "recipientType": recipientType, "senderId": senderId, "senderType": senderType, "subject": subject, "body": body, "from": '', "to": '', "date": '', "messageId": '', "inReplyTo": inReplyTo, "references": references}
       _this = @
 
-      newMessage = @store.createRecord 'message' , message
+      newMessage = @store.createRecord 'sentMessage' , message
       newMessage.save().then ((person) ->
         editorDiv.addClass('hide')
         editorDiv.next('.send-panel').addClass('hide')
@@ -58,4 +59,9 @@ App.MessageSenderController = Ember.Controller.extend(
         setTimeout (->
           alert.addClass('hide')
         ), 3500
+        
+      
+
+      #_this.set 'userInfo', _this.get('store').getById('employee', _this.get('userInfo.id'))
+        
 )
