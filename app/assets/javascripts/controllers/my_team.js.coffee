@@ -21,18 +21,34 @@ App.MyTeamController = Ember.ObjectController.extend(
 
   messagesTypeDidChanged: (->
     if @get 'isShowedSent'
-     @set 'displaiedMessages', @get 'myTeam.sentMessages'
+     @set 'displaiedMessages', @get 'outboundMessages'
     if @get 'isShowedReceived'
-     @set 'displaiedMessages', @get 'myTeam.receivedMessages'
+     @set 'displaiedMessages', @get 'inboundMessages'
   ).observes('isShowedSent', 'isShowedReceived')
 
-  messagesDidSent: (->
-    @set 'displaiedMessages', @get 'outboundMessages'
-  ).observes('content.outboundMessages')
+  messagesDidChanged: (->
+    if @get 'isShowedReceived'
+      @set 'displaiedMessages', @get 'inboundMessages'
+      return
+    if @get 'isShowedSent'  
+      @set 'displaiedMessages', @get 'outboundMessages'
+  ).observes('outboundMessages', 'inboundMessages')
 
+  myTeamDidChanged: ( ->
+    if @get('userInfo.team.content.id') != @get('myTeam.id')
+      @set 'myTeam', @get('userInfo.team.content')
+      @set 'displaiedMessages', @get('userInfo.team.content.receivedMessages.content') if @get 'isShowedReceived'
+      @set 'displaiedMessages', @get('userInfo.team.content.sentMessages.content') if @get 'isShowedSent'
+      @set 'inboundMessages', @get('userInfo.team.content.receivedMessages.content') 
+      @set 'outboundMessages', @get('userInfo.team.content.sentMessages.content')
+  ).observes('controllers.application.userInfo.team.content')
  
-
   actions:
+    do: ->
+      alert( @get('content.outboundMessages').length)
+      alert( @get('outboundMessages.content').length)
+      alert( @get('outboundMessages').length)
+    
     showPeople: ->
       @set 'isShowedPeople', true
       @set 'isShowedBusinesses', false
@@ -78,16 +94,16 @@ App.MyTeamController = Ember.ObjectController.extend(
         editorDiv.empty()
 
     showReceived: ->
-      @set 'inboundMessages', @store.find 'receivedMessage'
       @set 'isShowedSent', false
       @set 'isShowedReceived', true
+      @set 'inboundMessages', @store.find('receivedMessage', {received_by: 'Team'})
       $( "#sentMessages" ).removeClass( "active" )
       $( "#receivedMessages" ).addClass( "active" )
 
     showSent: ->
-      @set 'outboundMessages', @store.find 'sentMessage'
       @set 'isShowedSent', true
       @set 'isShowedReceived', false
+      @set 'outboundMessages', @store.find('sentMessage', {sent_by: 'Team'})
       $( "#sentMessages" ).addClass( "active" )
       $( "#receivedMessages" ).removeClass( "active" )
 )

@@ -16,8 +16,8 @@ class Message < ActiveRecord::Base
     Message.where(sender: employee)
   end
 
-  def self.all_from_team(team)
-    Message.where(sender: team)
+  def self.all_from_team(employee)
+    Message.where(sender: employee.team)
   end
 
 end

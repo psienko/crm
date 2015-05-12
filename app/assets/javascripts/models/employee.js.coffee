@@ -7,7 +7,7 @@ App.Employee =  DS.Model.extend( {
   currentSignInAt: DS.attr('date')
   avatarThumb: DS.attr('string')
 
-  team: DS.belongsTo('team')
+  team: DS.belongsTo('team', {async: true})
   receivedMessages: DS.hasMany('receivedMessage', {async: true})
   sentMessages: DS.hasMany('sentMessage', {async: true})
 
@@ -19,9 +19,9 @@ App.Employee =  DS.Model.extend( {
   ).property('firstname', 'lastname')
 
   hasTeam: ( ->
-    if @get('team')
+    if @get('team.content')
       true
     else 
       false
-  ).property('team')
+  ).property('team.content')
 })

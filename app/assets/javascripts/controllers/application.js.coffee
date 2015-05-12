@@ -6,6 +6,7 @@ App.ApplicationController = Ember.Controller.extend(
 
   init: ->
     @set 'userInfo', @store.find('employee', window.currentEmployeeId)
+    @set 'userTeamId', @get 'userInfo.team.id'
     return
 
   formattedDate: (->
