@@ -9,7 +9,7 @@ my-modal title='Informacje o pracowniku' ok='save' close='removeModal' submitTex
             | Dodaj do grupy
         '
         span title="Napisz do tego pracownika"
-          button.btn.btn-warning
+          button.btn.btn-warning{action 'showModal' 'messageModal' model}
             i.fa.fa-envelope
             '
             | Napisz

@@ -1,4 +1,3 @@
-button.btn-danger{action 'do'} LLL
 .row
   .col-md-5
     .panel.panel-inverse

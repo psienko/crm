@@ -131,7 +131,7 @@
                     model.customer.team.teamName
               .col-md-6.text-right
                 span title="Napisz wiadomość do grupy"
-                  button.btn.btn-warning
+                  button.btn.btn-warning{action 'showModal' 'messageModal' model.customer.team}
                     i.fa.fa-envelope
                     '
                     | Napisz

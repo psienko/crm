@@ -15,7 +15,7 @@ my-modal title='Wiadomość' ok='save' close='removeModal' submitText='Zapisz' h
         .col-md-12.col-sm-8.email-box
           .form-group
             label Do: 
-            view Ember.TextField value=model.fullName class="form-controll wysihtml5-subject" placeholder="Temat" disabled=true
+            view Ember.TextField value=model.fullName class="form-controll wysihtml5-subject" placeholder="Odbiorca" disabled=true
 
           .form-group
             label Temat: 

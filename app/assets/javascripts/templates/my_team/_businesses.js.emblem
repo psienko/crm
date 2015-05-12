@@ -19,5 +19,5 @@ table.table
             link-to 'business' customer.business class="btn btn-sm btn-default" title="Pokaż szczegóły"
               i.fa.fa-info-circle.fa-lg
             '
-            button.btn.btn-warning.btn-sm title="Napisz do tego klienta"
+            button.btn.btn-warning.btn-sm{action 'showModal' 'messageModal' customer} title="Napisz do tego klienta"
               i.fa.fa-envelope.fa-lg
