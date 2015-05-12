@@ -59,9 +59,4 @@ App.MessageSenderController = Ember.Controller.extend(
         setTimeout (->
           alert.addClass('hide')
         ), 3500
-        
-      
-
-      #_this.set 'userInfo', _this.get('store').getById('employee', _this.get('userInfo.id'))
-        
 )

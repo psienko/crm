@@ -44,10 +44,9 @@ App.MyTeamController = Ember.ObjectController.extend(
   ).observes('controllers.application.userInfo.team.content')
  
   actions:
-    do: ->
-      alert( @get('content.outboundMessages').length)
-      alert( @get('outboundMessages.content').length)
-      alert( @get('outboundMessages').length)
+    receive: ->
+      @set 'inboundMessages', @store.find('receivedMessage', {received_by: 'Team'})
+      
     
     showPeople: ->
       @set 'isShowedPeople', true

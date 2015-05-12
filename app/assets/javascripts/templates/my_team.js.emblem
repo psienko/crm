@@ -106,6 +106,12 @@
                 i.fa.fa-reply
                 '
                 |Wysłane
+
+            li.pull-right
+              a{action 'receive'} href=""
+                i.fa.fa-refresh
+                '
+                |Odbierz
           br
 
         each message in displaiedMessages
@@ -118,7 +124,7 @@
                       if isShowedReceived
                         ==message.sender.icon
                       if isShowedSent  
-                        ==message.sender.icon
+                        ==message.recipient.icon
                     if isShowedReceived    
                       message.sender.fullName
                     if isShowedSent    

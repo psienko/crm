@@ -10,5 +10,13 @@
       .modal-footer
         button.btn.btn-default type="button" data-dismiss="modal" Anuluj
         unless hideOKButton
-          button.btn.btn-black{action 'ok'} 
-            submitText
+          unless params
+            button.btn.btn-black{action 'ok'} 
+              i class={okClass}
+              '
+              submitText
+          else
+            button.btn.btn-black{action 'ok'}
+              i class={okClass}
+              '
+              submitText
