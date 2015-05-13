@@ -37,8 +37,16 @@ Rails.application.configure do
   config.assets.raise_runtime_errors = true
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
   config.ember.variant = :development
-  config.action_mailer.delivery_method = :letter_opener
-
+  #config.action_mailer.delivery_method = :letter_opener
+  config.action_mailer.smtp_settings = {
+    user_name:  ENV['SENDGRID_HEROKU_USER'],
+    password:  ENV['SENDGRID_HEROKU_PASSWORD'],
+    domain: ENV['DOMAIN'],
+    address: 'smtp.sendgrid.net',
+    port: 587,
+    authentication: :plain,
+    enable_starttls_auto: true
+  }
 
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true

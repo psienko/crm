@@ -25,9 +25,18 @@ class SourceAndTargetEmailDeterminer
   end
 
   def determine_target_address
+    return target_for_unknown_recipient if message.recipient.blank?
     return message.recipient.build_email_address if message.recipient.class.name == 'Team'
     return message.recipient.email if message.recipient.class.name == 'Employee'
     return message.recipient.customerable.email if message.recipient.person?
     message.recipient.customerable.build_recipient_addresses if message.recipient.business?
+  end
+
+  def target_for_unknown_recipient
+    return message.to if message.to.present?
+    if message.in_reply_to.present?
+      found_by_message_id = Message.find_by(message_id: message.in_reply_to)
+      return found_by_message_id.to if found_by_message_id.present?
+    end
   end
 end

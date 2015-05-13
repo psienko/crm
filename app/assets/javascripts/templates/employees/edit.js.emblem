@@ -17,5 +17,5 @@ my-modal title='Zmiana przynależności do grupy' ok='save' close='removeModal' 
           h3
             view Ember.Select             contentBinding="teamsArray"             optionValuePath="content.id" optionLabelPath="content.teamName" selectionBinding="selectedTeam" prompt="Brak grupy"
         else
-          span.loading.style-1
+          i.fa.fa-refresh.fa-spin.fa-4x
         

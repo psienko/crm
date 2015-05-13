@@ -15,21 +15,29 @@ class EmailReceiver
     recipients = check_and_get_recipient_for(sender)
     return false unless recipients.present?
     MessageCreator.call(email, sender, recipients)
-
   end
 
   private
 
   def check_and_get_sender
-    customer = Customer.find_by_email(email.from[:email])
-    notify_rejection(:no_customer) unless customer.present?
-    customer
+    sender = Customer.find_by_email(email.from[:email])
+    sender = Employee.find_by(email: email.from[:email]) unless sender.present?
+    notify_rejection(:no_customer) unless sender.present?
+    sender
   end
 
-  def check_and_get_recipient_for(customer)
+  def check_and_get_recipient_for(sender)
+    if sender.class.name == 'Employee'
+      recipients = []
+      recipients += Employee.where(email: email.to.map { |v| v[:email] })
+      recipients += Team.where(team_name: email.to.map { |v| v[:token] })
+      recipients = recipients.compact
+      notify_rejection(:incorrect_recipient) if recipients.empty?
+      return recipients
+    end
     recipients_list = email.to.map { |v| v[:token] }
     teams = Team.where(team_name: recipients_list)
-    correct_teams = teams.select { |val| val == customer.team }
+    correct_teams = teams.select { |val| val == sender.team }
     notify_rejection(:incorrect_recipient) if correct_teams.empty?
     correct_teams
   end

@@ -1,12 +1,12 @@
 class MessageCreator
   attr_accessor :email, :sender, :recipients
 
-  def initialize(email, sender, recipients)
+  def initialize(email, sender, recipients = nil)
     @email, @sender = email, sender
     @recipients = recipients.is_a?(Array) ? recipients : [recipients]
   end
 
-  def self.call(email, sender, recipients)
+  def self.call(email, sender, recipients = nil)
     new(email, sender, recipients).call
   end
 

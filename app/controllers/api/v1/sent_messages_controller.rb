@@ -23,7 +23,7 @@ class Api::V1::SentMessagesController < ApplicationController
     message = SourceAndTargetEmailDeterminer.call(Message.new(message_params))
     message = MessageCreator.call(MessageAsGriddler.new(message),
                                   message.sender, message.recipient)
-    if message.recipient_type == 'Customer'
+    if message.recipient_type == 'Customer' || message.recipient.blank?
       MessageSendAndUpdateJob.perform_later(message.id)
     end
     message.date = DateTime.now

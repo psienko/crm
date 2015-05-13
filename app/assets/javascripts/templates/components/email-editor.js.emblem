@@ -1,0 +1,43 @@
+.panel-body
+  div  
+    .row
+      .col-md-1
+      .col-md-10
+        .warning-info.hide
+          .alert.alert-warning
+            button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+            h5 
+              b Podaj adres e-mail odbiorcy
+        .error-info.hide
+          .alert.alert-danger
+            button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+            h5 
+              b Nastąpił nieoczekiwany błąd, wiadomość nie została wysłana. 
+              |Proszę spróbować później.
+        .success-info.hide
+          .alert.alert-success
+            strong
+              button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+            h4 Wysłano
+    
+    .panel-body
+      .row
+        .col-md-12.col-sm-8.email-box
+          .form-group
+            label Do: 
+            view Ember.TextField id="messageTo" value=fields.to class="form-controll wysihtml5-subject" placeholder="Odbiorca"
+
+          .form-group
+            label Temat: 
+            view Ember.TextField id="messageSubject" value=fields.subject class="form-controll full-row wysihtml5-subject" placeholder="Temat"
+          
+          /textarea class='wysihtml5 wysihtml5-sandbox full-row' id="newEmailTextarea" placeholder='Wprowadź wiadomość ...'
+          view Ember.TextArea  id="newEmailTextarea" value=fields.body class='wysihtml5 wysihtml5-sandbox full-row' placeholder="Wprowadź wiadomość ..."
+    .panel-footer
+      .row
+        .col-md-12
+          .text-right
+            button.btn.btn-lg.btn-black{action 'ok'}
+              i.fa.fa-paper-plane.fa-lg
+              '
+              | Wyślij

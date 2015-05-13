@@ -53,7 +53,7 @@
   .col-md-7
     .panel.panel-inverse
       .panel-heading
-        %h1.panel-title 
+        h1.panel-title 
           i.fa.fa-users
           '
           |Obsługiwani klienci
@@ -98,18 +98,27 @@
           ul.nav.nav-tabs
             li#receivedMessages.active role="presentation"
               a{action 'showReceived'} href="" 
-                i.fa.fa-share
+                if isLoadingReceived
+                  i.fa.fa-refresh.fa-spin
+                else
+                  i.fa.fa-share
                 '
                 |Odebrane
             li#sentMessages role="presentation"
               a{action 'showSent'} href="" 
-                i.fa.fa-reply
+                if isLoadingSent
+                  i.fa.fa-refresh.fa-spin
+                else
+                  i.fa.fa-reply
                 '
                 |Wysłane
 
             li.pull-right
               a{action 'receive'} href=""
-                i.fa.fa-refresh
+                if isReceiving
+                  i.fa.fa-refresh.fa-spin
+                else
+                  i.fa.fa-refresh
                 '
                 |Odbierz
           br

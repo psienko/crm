@@ -12,15 +12,15 @@ Faker::Config.locale = :pl
 
 
 employee_list = [
-  ['Adminname', 'Adminlastname', 'admin@admin.com', 'qwertyui'],
-  ['John', 'Doe', 'john.doe@example.com', 'password'],
-  ['Christopher', 'Turner', 'hristopher.turner@example.com', 'password'],
-  ['Brandon', 'Kelly', 'brandon.kelly@example.com', 'password'],
-  ['Jessica', 'Lambert', 'jessica.lambert@example.com', 'password'],
-  ['Simon', 'Lawrence', 'simon.lawrence@example.com', 'password'],
-  ['Brandon', 'Lambert', 'brandon.lambert@example.com', 'password'],
-  ['Jan', 'Kowalski', 'jan.kowalski@example.com', 'password'],
-  ['Krzysztof', 'Nowak', 'krzysztof.nowak@example.com', 'password']
+  ['Adminname', 'Adminlastname', "admin@#{EMAIL_HOST}", 'qwertyui'],
+  ['John', 'Doe', "john.doe@#{EMAIL_HOST}", 'password'],
+  ['Christopher', 'Turner', "hristopher.turner@#{EMAIL_HOST}", 'password'],
+  ['Brandon', 'Kelly', "brandon.kelly@#{EMAIL_HOST}", 'password'],
+  ['Jessica', 'Lambert', "jessica.lambert@#{EMAIL_HOST}", 'password'],
+  ['Simon', 'Lawrence', "simon.lawrence@#{EMAIL_HOST}", 'password'],
+  ['Brandon', 'Lambert', "brandon.lambert@#{EMAIL_HOST}", 'password'],
+  ['Jan', 'Kowalski', "jan.kowalski@#{EMAIL_HOST}", 'password'],
+  ['Krzysztof', 'Nowak', "krzysztof.nowak@e#{EMAIL_HOST}", 'password']
 ]
 
 team_name_list = ["alfa", "beta", "gamma"]

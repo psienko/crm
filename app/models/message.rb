@@ -2,6 +2,8 @@ class Message < ActiveRecord::Base
   belongs_to :recipient, polymorphic: true
   belongs_to :sender, polymorphic: true
   
+  validates :to, presence: true
+
   default_scope { order('date DESC') }
 
   def self.all_to(employee)

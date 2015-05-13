@@ -1,0 +1,130 @@
+.row
+  .col-md-12
+    .panel.panel-inverse
+      .panel-heading
+        h1.panel-title 
+          i.fa.fa-inbox 
+          '
+          |Wiadomości  
+      .row.panel-body
+        .col-md-12
+          ul.nav.nav-tabs
+            li#receivedMessages.active role="presentation"
+              a{action 'showReceived'} href="" 
+                if isLoadingReceived
+                  i.fa.fa-refresh.fa-spin
+                else
+                  i.fa.fa-share
+                '
+                |Odebrane
+            li#sentMessages role="presentation"
+              a{action 'showSent'} href="" 
+                if isLoadingSent
+                  i.fa.fa-refresh.fa-spin
+                else
+                  i.fa.fa-reply
+                '
+                |Wysłane
+
+            li#createMessage role="presentation"
+              a{action 'showCreate'} href="" 
+                i.fa.fa-pencil-square-o
+                '
+                |Utwórz
+
+            li.pull-right
+              a{action 'receive'} href=""
+                if isReceiving
+                  i.fa.fa-refresh.fa-spin
+                else
+                  i.fa.fa-refresh
+                '
+                |Odbierz
+          br
+          
+          / ************************* EMAIL EDYTOR **************************  
+        .col-md-12
+          if isShowedCreate
+            #newEmailEditor
+              email-editor ok='send'
+          
+
+        unless isShowedCreate  
+          each message in displaiedMessages
+            .col-md-12.message
+              .row
+                .col-md-12.panel-heading.message-subject-panel.collapsed-message{action 'showhide' message.htmlId} id=message.htmlId
+                  .row
+                    .col-md-3.col-sm-4
+                      .message-subject-icon
+                        if isShowedReceived
+                          ==message.sender.icon
+                        if isShowedSent  
+                          ==message.recipient.icon
+                      if isShowedReceived    
+                        message.sender.fullName
+                      if isShowedSent    
+                        message.recipient.fullName
+                    .col-md-7.col-sm-5
+                      label Temat
+                      '
+                      '
+                      message.subject
+                    .col-md-2.col-sm-3.text-right
+                      message.formattedDate
+              .row.hide class=message.htmlId
+                .row
+                  .col-md-5
+                    small
+                      p.text-info
+                        b Od:
+                        '
+                        a{action goto message.sender} href=""
+                          |<
+                          message.from
+                          '
+                          |(
+                          message.sender.fullName
+                          |)
+                          |>
+                        br
+                        b Do:
+                        '
+                        message.to
+                  .col-md-7
+                    .text-right
+                      button.btn.btn-large.btn-black.fa.fa-reply.la-lg.reply-button{action 'showReplyEditor' message} title="Odpowiedz"
+
+                .col-md-12
+                  .col-md-1
+                  .col-md-10
+                    .error-info.hide
+                      .alert.alert-danger
+                        button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+                        h5 
+                          b 
+                            |Nastąpił nieoczekiwany błąd, wiadomość nie została wysłana. 
+                          |Proszę spróbować później
+                    .success-info.hide
+                      .alert.alert-success
+                        strong
+                          button.close aria-hidden="true" data-dismiss="alert" type="button" &times
+                        h4 Wysłano
+
+                .col-md-12.panel-body
+                  ==message.body
+
+                  .row
+                    .col-md-12.email-box.hide
+                    .col-md-12.send-panel.hide
+                      .text-right
+                        if isShowedReceived
+                          button.btn.btn-lg.btn-black{action 'sendReply' message 'received' target='controllers.messageSender'}
+                            i.fa.fa-paper-plane.fa-lg
+                            '
+                            | Wyślij
+                        if isShowedSent
+                          button.btn.btn-lg.btn-black{action 'sendReply' message 'sent' target='controllers.messageSender'}
+                            i.fa.fa-paper-plane.fa-lg
+                            '
+                            | Wyślij

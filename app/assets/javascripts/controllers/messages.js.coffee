@@ -1,19 +1,14 @@
-App.MyTeamController = Ember.ObjectController.extend(
-  needs: ['application', 'teams', 'teamsEdit', 'messageSender']
-  init: ->
-    @set 'controllers.application.userInfo', @store.find('employee', window.currentEmployeeId)
-    return
+App.MessagesController = Ember.ObjectController.extend(
+  needs: ['application', 'messageSender']
 
-  isShowedPeople: true
-  isShowedBusinesses: false
   isShowedSent: false
   isShowedReceived: true
+  isShowedCreate: false
   isReceiving: false
   isLoadingReceived: false
   isLoadingSent: false
 
   userInfo: Ember.computed.alias('controllers.application.userInfo')
-  myTeam: (-> @get 'team').property() 
 
   displaiedMessages: ( ->
     if @get 'isShowedReceived' 
@@ -37,39 +32,19 @@ App.MyTeamController = Ember.ObjectController.extend(
       @set 'displaiedMessages', @get 'outboundMessages'
   ).observes('outboundMessages', 'inboundMessages')
 
-  myTeamDidChanged: ( ->
-    if @get('userInfo.team.content.id') != @get('myTeam.id')
-      @set 'myTeam', @get('userInfo.team.content')
-      @set 'displaiedMessages', @get('userInfo.team.content.receivedMessages.content') if @get 'isShowedReceived'
-      @set 'displaiedMessages', @get('userInfo.team.content.sentMessages.content') if @get 'isShowedSent'
-      @set 'inboundMessages', @get('userInfo.team.content.receivedMessages.content') 
-      @set 'outboundMessages', @get('userInfo.team.content.sentMessages.content')
-  ).observes('controllers.application.userInfo.team.content')
- 
   actions:
     receive: ->
       @set 'isReceiving', true
       @set 'isShowedSent', false
       @set 'isShowedReceived', true
+      @set 'isShowedCreate', false
       $( "#sentMessages" ).removeClass( "active" )
       $( "#receivedMessages" ).addClass( "active" )
+      $( "#createMessage" ).removeClass( "active" )
       _this = @
-      (messages = @store.find('receivedMessage', {received_by: 'Team'})).finally ->
+      (messages = @store.find('receivedMessage', {received_by: 'Employee'})).finally ->
         _this.set 'inboundMessages', messages
-        setTimeout (-> _this.set 'isReceiving', false), 500
-
-    
-    showPeople: ->
-      @set 'isShowedPeople', true
-      @set 'isShowedBusinesses', false
-      $( "#peopleTab" ).addClass( "active" )
-      $( "#businessesTab" ).removeClass( "active" )
-
-    showBusinesses: ->
-      @set 'isShowedPeople', false
-      @set 'isShowedBusinesses', true
-      $( "#peopleTab" ).removeClass( "active" )
-      $( "#businessesTab" ).addClass( "active" )
+        setTimeout (-> _this.set 'isReceiving', false), 500 
 
     showhide: (htmlId)->
       htmlClass = "."+htmlId
@@ -107,10 +82,12 @@ App.MyTeamController = Ember.ObjectController.extend(
       @set 'isLoadingReceived', true
       @set 'isShowedSent', false
       @set 'isShowedReceived', true
+      @set 'isShowedCreate', false
       $( "#sentMessages" ).removeClass( "active" )
       $( "#receivedMessages" ).addClass( "active" )
+      $( "#createMessage" ).removeClass( "active" )
       _this = @
-      (messages = @store.find('receivedMessage', {received_by: 'Team'})).finally ->
+      (messages = @store.find('receivedMessage', {received_by: 'Employee'})).finally ->
         _this.set 'inboundMessages', messages
         setTimeout (-> _this.set 'isLoadingReceived', false), 500
 
@@ -118,10 +95,49 @@ App.MyTeamController = Ember.ObjectController.extend(
       @set 'isLoadingSent', true
       @set 'isShowedSent', true
       @set 'isShowedReceived', false
+      @set 'isShowedCreate', false
       $( "#sentMessages" ).addClass( "active" )
       $( "#receivedMessages" ).removeClass( "active" )
+      $( "#createMessage" ).removeClass( "active" )
       _this = @
-      (messages = @store.find('sentMessage', {sent_by: 'Team'})).finally ->
+      (messages = @store.find('sentMessage', {sent_by: 'Employee'})).finally ->
         _this.set 'outboundMessages', messages
         setTimeout (-> _this.set 'isLoadingSent', false), 500
+
+    showCreate: ->
+      @set 'isShowedCreate', true
+      @set 'isShowedSent', false
+      @set 'isShowedReceived', false
+      $( "#sentMessages" ).removeClass( "active" )
+      $( "#receivedMessages" ).removeClass( "active" )
+      $( "#createMessage" ).addClass( "active" )
+
+    send: ->
+      toInput = $('#newEmailEditor').find('#messageTo')
+      toInputValidation = $('#newEmailEditor').find('.warning-info')
+      if toInput.val().length == 0
+        toInputValidation.removeClass('hide')
+        return
+      unless toInputValidation.hasClass('hide')
+        toInputValidation.addClass('hide')
+      @set 'fields.to', $('#newEmailEditor').find('#messageTo').val()
+      @set 'fields.subject', $('#newEmailEditor').find('#messageSubject').val()
+      @set 'fields.body', $('#newEmailEditor').find('#newEmailTextarea').val()
+      _this = @
+      newMessage = @store.createRecord 'message' , @get('fields')
+      newMessage.save().then ( ->
+        $('#newEmailEditor').find('#messageTo').val('')
+        $('#newEmailEditor').find('#messageSubject').val('')
+        $('#newEmailEditor').find(".wysihtml5-sandbox").data("wysihtml5").editor.setValue('')
+        alertInfo = $('#newEmailEditor').find('.success-info')
+        alertInfo.removeClass('hide')
+        setTimeout (->
+          alertInfo.addClass('hide')
+        ), 3000
+      ), (errors) ->
+        alertInfo = $('#newEmailEditor').find('.error-info')
+        alertInfo.removeClass('hide')
+        setTimeout (->
+          alertInfo.addClass('hide')
+        ), 3500       
 )
