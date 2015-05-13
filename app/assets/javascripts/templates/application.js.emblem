@@ -20,11 +20,11 @@
           i.fa.fa-users
 
 
-      li role="presentation"
-        a href="#" 
-          | Zadania
-          '
-          i.fa.fa-tasks
+      /li role="presentation"
+        /a href="#" 
+          /| Zadania
+          /'
+          /i.fa.fa-tasks
 
       li role="presentation"
         link-to 'teams'
@@ -32,11 +32,11 @@
           '
           i.fa.fa-sitemap
 
-      li role="presentation"
-        a href="#" 
-          | Spotkania
-          '
-          i.fa.fa-calendar
+      /li role="presentation"
+        /a href="#" 
+          /| Spotkania
+          /'
+          /i.fa.fa-calendar
   
       li role="presentation"
         link-to 'messages'
