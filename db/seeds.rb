@@ -20,7 +20,7 @@ employee_list = [
   ['Simon', 'Lawrence', "simon.lawrence@#{EMAIL_HOST}", 'password'],
   ['Brandon', 'Lambert', "brandon.lambert@#{EMAIL_HOST}", 'password'],
   ['Jan', 'Kowalski', "jan.kowalski@#{EMAIL_HOST}", 'password'],
-  ['Krzysztof', 'Nowak', "krzysztof.nowak@e#{EMAIL_HOST}", 'password']
+  ['Krzysztof', 'Nowak', "krzysztof.nowak@#{EMAIL_HOST}", 'password']
 ]
 
 team_name_list = ["alfa", "beta", "gamma"]

@@ -10,12 +10,6 @@
         = f.check_box :remove_avatar 
       = f.file_field :avatar  
       = f.hidden_field :avatar_cache
-    .form-group
-      = f.label :email
-      = f.email_field :email, :autofocus => true, class: 'form-control'
-      - if devise_mapping.confirmable? && resource.pending_reconfirmation?
-        %div
-          Currently waiting confirmation for: #{resource.unconfirmed_email}
     %fieldset
       %p Leave these fields blank if you don't want to change your password.
       .form-group
