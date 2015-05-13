@@ -4,18 +4,19 @@ class Api::V1::MessagesController < ApplicationController
   expose(:message) { Message.find(params[:id]) }
 
   def create
-    return respond_unprocessable if message_params[:to].blank?
     message = Message.new(message_params)
+    message.to = message.to.tr(',', ' ').tr(';', ' ').scan(/\S+@\S+/).join(', ')
+    return respond_unprocessable if message.to.blank?
+    
     message.sender = current_employee
     message.from = current_employee.email
-    message.to = message.to.tr(',', ' ').tr(';', ' ').scan(/\S+@\S+/).join(', ')
     message = MessageCreator.call(MessageAsGriddler.new(message),
                                   message.sender)
     if message
       MessageSendAndUpdateJob.perform_later(message.id)
       respond_with :api, :v1, message
     else
-      respond_unprocessable
+      return respond_unprocessable
     end
   end
 

@@ -6,6 +6,8 @@
           | Moja grupa
           '
           i.fa.fa-briefcase
+          '
+          span#teamCounter.hide.badge
 
       li role="presentation"
         link-to 'employees' 
@@ -43,6 +45,8 @@
           | Wiadomości
           '
           i.fa.fa-envelope
+          '
+          span#employeeCounter.hide.badge
 .row
   .col-lg-12
     br
