@@ -4,7 +4,7 @@ App.BusinessesEditTeamController = Ember.ObjectController.extend(
   isLoading: false
   
   selectedTeam: ( -> 
-    @get 'model.customer.team'
+    @get 'model.customer.team.content'
   ).property()
 
   teamsArray: ( ->
@@ -16,7 +16,7 @@ App.BusinessesEditTeamController = Ember.ObjectController.extend(
   ).property()
 
   modalDidChanged: (->
-    @set 'selectedTeam', @get('model.customer.team')
+    @set 'selectedTeam', @get('model.customer.team.content')
   ).observes('modal')
 
   actions:
@@ -25,7 +25,7 @@ App.BusinessesEditTeamController = Ember.ObjectController.extend(
       @set 'isSaved', false
       @set('model.customer.team', @get('selectedTeam'))
       _this = @
-      @get('model.customer').save().then ->
+      @get('model.customer.content').save().then ->
         _this.set 'isSaved', true
         _this.get('store').find('business')
       , ->

@@ -6,7 +6,10 @@ App.PeopleNewController = Ember.Controller.extend(
       _this = @
       date = $('#dateOfBirth').val()
       if date != ''
-        @set 'fields.dateOfBirth', new Date(date)
+        parts = date.split('/')
+        newDate = new Date(parts[2],parts[1]-1, parts[0])
+        newDate.setHours(12)
+        @set 'fields.dateOfBirth', newDate
       person = @store.createRecord 'person', @get('fields')
       person.save().then ((person) ->
         _this.transitionToRoute 'person', person

@@ -12,6 +12,10 @@ App.Business = App.Customerable.extend
   regon: DS.attr('string')
   contacts: DS.attr('string')
 
+  fullName: ( ->
+    @get 'companyName'
+  ).property('companyName')
+
   contactsArray: ( ->
     input = @get 'contacts'
     unless input

@@ -134,10 +134,16 @@
                         ==message.sender.icon
                       if isShowedSent  
                         ==message.recipient.icon
-                    if isShowedReceived    
-                      message.sender.fullName
+                    if isShowedReceived
+                      if message.senderIsCustomer
+                        message.sender.customerable.content.fullName
+                      else  
+                        message.sender.fullName
                     if isShowedSent    
-                      message.recipient.fullName
+                      if message.recipientIsCustomer
+                        message.recipient.customerable.content.fullName
+                      else
+                        message.recipient.fullName
                   .col-md-7.col-sm-5
                     label Temat
                     '

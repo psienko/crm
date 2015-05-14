@@ -12,7 +12,7 @@ class BusinessSerializer < ActiveModel::Serializer
              :nip,
              :regon,
              :contacts
-  has_one :customer#, embed: :ids, include: true #, embed: :objects, include: true
+  has_one :customer, embed: :ids #, include: true #, embed: :objects, include: true
   #def customerable
    # object.customerable.map { |e| { id: e.id, type: e.type } }
   #end

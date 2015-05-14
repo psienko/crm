@@ -20,6 +20,8 @@ App.Message = DS.Model.extend({
     "messageId-"+ @get('id')
   ).property('id')
 
+  senderIsCustomer:(-> @get('senderType')=="Customer").property()
+  recipientIsCustomer:(-> @get('recipientType')=="Customer").property()
   recipient: ( ->
     if @get('recipientType') == 'Team'
       return @store.find('team', @get('recipientId'))

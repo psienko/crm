@@ -1,8 +1,8 @@
 App.Team =  DS.Model.extend
 
   teamName: DS.attr('string')
-  employees: DS.hasMany('employee')
-  customers: DS.hasMany('customer')
+  employees: DS.hasMany('employee', {async: true})
+  customers: DS.hasMany('customer', {async: true})
   receivedMessages: DS.hasMany('receivedMessage', {async: true})
   sentMessages: DS.hasMany('sentMessage', {async: true})
 

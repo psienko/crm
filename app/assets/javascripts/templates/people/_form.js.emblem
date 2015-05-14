@@ -17,7 +17,7 @@
       .form-group.col-md-6
         label Data urodzenia
         br 
-        input type="text" id="dateOfBirth" value=fields.dateOfBirth data-provide='datepicker'
+        input type="text" data-date-format="dd/mm/yyyy" id="dateOfBirth" value=fields.dateOfBirth data-provide='datepicker'
 
   .panel.panel-default
     .panel-heading

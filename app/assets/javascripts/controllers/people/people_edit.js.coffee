@@ -8,7 +8,10 @@ App.PeopleEditController = Ember.ObjectController.extend(
       _this = @
       date = $('#dateOfBirthModal').val()
       if date != ''
-        @set 'model.dateOfBirth', new Date(date)
+        parts = date.split('/')
+        newDate = new Date(parts[2],parts[1]-1, parts[0])
+        newDate.setHours(12)
+        @set 'model.dateOfBirth', newDate
       @get('model').save().then ->
         _this.set 'isSaved', true
       , ->

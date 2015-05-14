@@ -21,6 +21,33 @@ window.App = Ember.Application.create(
 
 $('.dropdown-toggle').dropdown()
 
+$('datepickerClass').datepicker ->
+  dateFormat: "dd-mm-YYYY"
+#getter
+dateFormat = $( ".selector" ).datepicker( "option", "dateFormat" )
+ 
+#Setter
+$( ".selector" ).datepicker( "option", "dateFormat", "yy-mm-dd" )
+
+$ ->
+  dates = $('datepickerClass').datepicker(
+    dateFormat: 'dd/mm/yy'
+    defaultDate: '+1w'
+    changeMonth: false
+    numberOfMonths: 1
+    showOn: 'both'
+    buttonImage: 'contact/calendar/calendar.gif'
+    buttonImageOnly: true
+    onSelect: (selectedDate) ->
+      option = if @id == 'from' then 'minDate' else 'maxDate'
+      instance = $(this).data('datepicker')
+      date = $.datepicker.parseDate(instance.settings.dateFormat or $.datepicker._defaults.dateFormat, selectedDate, instance.settings)
+      dates.not(this).datepicker 'option', option, date
+      return
+  )
+  return
+
+
 window.startedTeam = false
 window.startedEmployee = false
 

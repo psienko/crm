@@ -10,8 +10,7 @@ class PersonSerializer < ActiveModel::Serializer
              :address,
              :postcode,
              :date_of_birth #, :customer
-  has_one :customer#, embed: :ids, include: true #, as: :customerable#polimorphic: true #embed: :objects, include: true
-
+  has_one :customer, embed: :ids, include: true
   #def customer
    # object.customer
   #end

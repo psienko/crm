@@ -15,7 +15,9 @@ App.Person = App.Customerable.extend
     moment(@get('dateOfBirth')).format 'DD/MM/YYYY'
   ).property('dateOfBirth')
 
-
+  fullName: ( ->
+    @get('firstname') + " " + @get('lastname')
+  ).property('firstname', 'lastname')
 #App.Person.reopenClass
  # valid: (fields) ->
   #  fields.firstname and fields.lastname
