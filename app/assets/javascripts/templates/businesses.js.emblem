@@ -68,7 +68,7 @@ unless hideIndex
                     '
                     = business.address 
                   td 
-                    link-to 'business' business class="btn btn-sm btn-primary" 
+                    link-to 'business' business class="btn btn-sm btn-green-black" 
                       | Szczegóły
                       '
                       i.fa.fa-info-circle

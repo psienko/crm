@@ -34,7 +34,7 @@ br
                   td = employee.email
                   td = employee.team.teamName
                   td 
-                    button.btn.btn-sm.btn-primary{action 'showModal' 'employees.show' employee}
+                    button.btn.btn-sm.btn-green-black{action 'showModal' 'employees.show' employee}
                       | Szczegóły
                       '
                       i.fa.fa-info-circle

@@ -63,7 +63,7 @@ unless hideIndex
                   td = person.pesel
                   td = person.email
                   td 
-                    link-to 'person' person class="btn btn-sm btn-primary" 
+                    link-to 'person' person class="btn btn-sm btn-green-black" 
                       | Szczegóły
                       '
                       i.fa.fa-info-circle

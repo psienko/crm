@@ -9,6 +9,8 @@ $mercury: #e5e5e5;
 $black_5: rgba(0,0,0,.05);
 $black: #000000;
 $bright-black: #282828;
+$green-black: #515146;
+$green-dark-black: #252518;
 
 // make all images responsive by default
 img {
@@ -107,6 +109,15 @@ section {
   &:hover {
     color: $white;
     background-color: $black;
+  }
+}
+
+.btn-green-black {
+  color: $white;
+  background-color: $green-black;
+  &:hover {
+    color: $white;
+    background-color: $green-dark-black;
   }
 }
 
