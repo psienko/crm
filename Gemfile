@@ -41,6 +41,11 @@ gem 'sinatra', require: false
 gem 'slim'
 
 
+group :development do
+  gem "rails-erd"
+  gem 'railroady'
+end
+
 group :development, :test do
   gem 'pry-rails'
   gem 'byebug'
