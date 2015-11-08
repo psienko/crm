@@ -17,8 +17,8 @@
 default: &default
   adapter: postgresql
   encoding: unicode
-  username: ror_developer
-  password: 'qwertyui'
+  # username: ror_developer
+  # password: 'qwertyui'
   # For details on connection pooling, see rails configuration guide
   # http://guides.rubyonrails.org/configuring.html#database-pooling
   pool: 5
@@ -83,5 +83,5 @@ test:
 production:
   <<: *default
   database: crm_production
-  username: crm
+  username: developer
   password: <%= ENV['CRM_DATABASE_PASSWORD'] %>

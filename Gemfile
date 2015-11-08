@@ -39,11 +39,17 @@ gem 'griddler-sendgrid'
 gem 'sidekiq'
 gem 'sinatra', require: false
 gem 'slim'
+gem 'newrelic_rpm'
 
 
 group :development do
   gem "rails-erd"
   gem 'railroady'
+  gem 'capistrano',  '~> 3.1.0'
+  gem 'capistrano-bundler', '~> 1.1.2'
+  gem 'capistrano-rails', '~> 1.1'
+  gem 'capistrano-rvm', '~> 0.1.1'
+  gem 'capistrano-sidekiq', '~> 0.4.0', require: false
 end
 
 group :development, :test do
