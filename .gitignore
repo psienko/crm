@@ -4,6 +4,10 @@
 # or operating system, you probably want to add a global ignore instead:
 #   git config --global core.excludesfile '~/.gitignore_global'
 
+
+/config/database.yml
+/config/local_env.yml
+/config/secrets.yml
 # Ignore bundler config.
 /.bundle
 
@@ -11,7 +15,7 @@
 /log/*
 !/log/.keep
 /tmp
-/config/database.yml
-/config/local_env.yml
-/config/secrets.yml
+config/database.yml
+config/local_env.yml
+config/secrets.yml
 ngrok
