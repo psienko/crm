@@ -12,5 +12,6 @@
 !/log/.keep
 /tmp
 /config/database.yml
+/config/local_env.yml
 /config/secrets.yml
 ngrok

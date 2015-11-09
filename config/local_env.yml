@@ -3,7 +3,7 @@ development:
   SENDGRID_PASSWORD: "RubyOnRails4.1"
   SENDGRID_HEROKU_PASSWORD: "7sxo4wv54353"
   SENDGRID_HEROKU_USER: "app35150464@heroku.com"
-  DOMAIN: "crm-prz.24tm.pl"
+  DOMAIN: "crm.24tm.pl"
   DEFAULT_AVATAR: /uploads/user/avatar/default_avatar.gif
 test:
   DEFAULT_AVATAR: /uploads/user/avatar/default_avatar.gif

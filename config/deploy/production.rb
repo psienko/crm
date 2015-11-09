@@ -18,7 +18,7 @@ set :deploy_to, '~/deploy'
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server '37.233.98.245', user: 'developer', roles: %w{web app db}, my_property: :my_value
+server '37.233.99.43', user: 'developer', roles: %w{web app db}, my_property: :my_value
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options

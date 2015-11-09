@@ -25,7 +25,7 @@ set :sidekiq_config, -> { File.join(shared_path, 'config', 'sidekiq.yml') }
 set :pty, true
 
 # Default value for :linked_files is []
-set :linked_files, %w{config/database.yml config/sidekiq.yml config/local_env.yml}
+set :linked_files, %w{config/database.yml config/sidekiq.yml config/local_env.yml config/secrets.yml}
 
 # Default value for linked_dirs is []
 set :linked_dirs, %w{bin log tmp/pids tmp/cache tmp/sockets vendor/bundle public/system}
