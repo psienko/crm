@@ -5,7 +5,7 @@
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
 #role :app, %w{37.233.98.245}
-role :web, %w{37.233.98.245}
+role :web, %w{37.233.99.43}
 #role :db,  %w{deploy@example.com}
 
 set :branch, :master
