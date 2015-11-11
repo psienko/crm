@@ -1,3 +1,5 @@
+require 'new_relic/recipes'
+
 # config valid only for Capistrano 3.1
 lock '3.1.0'
 
@@ -63,5 +65,7 @@ namespace :deploy do
       # end
     end
   end
+
+  after "deploy:updated", "newrelic:notice_deployment"
 
 end
