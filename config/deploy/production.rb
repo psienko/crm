@@ -8,7 +8,7 @@
 role :web, %w{37.233.99.43}
 #role :db,  %w{deploy@example.com}
 
-set :branch, :master
+set :branch, :develop
 set :rails_env, 'production'
 set :deploy_to, '~/deploy'
 
