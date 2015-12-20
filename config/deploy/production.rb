@@ -5,7 +5,7 @@
 # unless any hosts have the primary property set.
 # Don't declare `role :all`, it's a meta role
 #role :app, %w{37.233.98.245}
-role :web, %w{37.233.101.140}
+role :web, %w{37.233.103.163}
 #role :db,  %w{deploy@example.com}
 
 set :branch, :develop
@@ -18,7 +18,7 @@ set :deploy_to, '~/deploy'
 # definition into the server list. The second argument
 # something that quacks like a hash can be used to set
 # extended properties on the server.
-server '37.233.101.140', user: 'developer', roles: %w{web app db}, my_property: :my_value
+server '37.233.103.163', user: 'developer', roles: %w{web app db}, my_property: :my_value
 
 # you can set custom ssh options
 # it's possible to pass any option but you need to keep in mind that net/ssh understand limited list of options
