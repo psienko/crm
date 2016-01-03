@@ -2,7 +2,7 @@
   .col-md-12       
     ul.nav.nav-tabs
       li role="presentation"
-        link-to 'myTeam'
+        link-to#home_nav 'myTeam'
           | Moja grupa
           '
           i.fa.fa-briefcase
@@ -10,13 +10,13 @@
           span#teamCounter.hide.badge
 
       li role="presentation"
-        link-to 'employees' 
+        link-to#employees_nav 'employees' 
           | Pracownicy
           '
           i.fa.fa-user-secret.fa-user
 
       li role="presentation"
-        link-to 'people'
+        link-to#people_nav 'people'
           |Klienci
           '
           i.fa.fa-users
@@ -29,7 +29,7 @@
           /i.fa.fa-tasks
 
       li role="presentation"
-        link-to 'teams'
+        link-to#teams_nav 'teams'
           | Grupy
           '
           i.fa.fa-sitemap
@@ -41,7 +41,7 @@
           /i.fa.fa-calendar
   
       li role="presentation"
-        link-to 'messages'
+        link-to#messages_nav 'messages'
           | Wiadomości
           '
           i.fa.fa-envelope

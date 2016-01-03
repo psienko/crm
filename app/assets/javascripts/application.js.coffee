@@ -78,11 +78,11 @@ getCounter = (->
           $('#teamCounter').text(window.teamMessages)
         else
           $('#teamCounter').addClass('hide') unless $('#teamCounter').hasClass('hide')
-    complete: -> setTimeout getCounter, 5000
+    complete: -> setTimeout getCounter, 45000
 )
 
 $(document).ready ->
-  setTimeout getCounter, 5000
+  setTimeout getCounter, 45000
   return
 
 
