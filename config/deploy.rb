@@ -43,7 +43,7 @@ set :rvm_ruby_version, '2.2.2'
 #set :use_sudo, false
 ##set :rails_env, "production"
 #set :deploy_via, :copy
-set :ssh_options, { :port => 2022 }
+set :ssh_options, { :port => 22 }
 
 namespace :deploy do
 
