@@ -9,7 +9,6 @@ influxdb:
     - "8099"
   environment:
     - PRE_CREATE_DB=collector
-  name: influxdb
 
 grafana:
   image: grafana/grafana
@@ -17,7 +16,7 @@ grafana:
     - influxdb
   ports:
     - "3010:3000"
-  name: grafana
+
 web:
   build: .
   command: bundle exec rackup --host 0.0.0.0 -p 4567
@@ -28,4 +27,3 @@ web:
   links:
     - influxdb
     - grafana
-  name: sinatra_rpm_listner
