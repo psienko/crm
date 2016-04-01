@@ -1,0 +1,1251 @@
+{
+  "id": 1,
+  "title": "CRM",
+  "originalTitle": "CRM",
+  "tags": [],
+  "style": "dark",
+  "timezone": "browser",
+  "editable": true,
+  "hideControls": false,
+  "sharedCrosshair": false,
+  "rows": [
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "CRM_collector",
+          "decimals": null,
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 1,
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "hideEmpty": false,
+            "max": true,
+            "min": true,
+            "rightSide": true,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                }
+              ],
+              "query": "SELECT max(mduration) FROM \"analytics_data\" WHERE \"mtype\" = 'Transaction' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "rawQuery": true,
+              "refId": "A",
+              "tags": []
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Duration",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "Row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "CRM_collector",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 2,
+          "interval": ">60s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": true,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [],
+          "span": 12,
+          "stack": false,
+          "steppedLine": false,
+          "targets": [
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Memory/Physical' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "A",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Memory/Physical"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "hide": false,
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'CPU/System Time' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "B",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "CPU/System Time"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'CPU/User Time' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "C",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "CPU/User Time"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'CPU/System/Utilization' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "D",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "CPU/System/Utilization"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'CPU/User/Utilization' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "E",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "CPU/User/Utilization"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Memory / CPU",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "collapse": false,
+      "editable": true,
+      "height": "250px",
+      "panels": [
+        {
+          "aliasColors": {},
+          "bars": false,
+          "datasource": "CRM_collector",
+          "editable": true,
+          "error": false,
+          "fill": 1,
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "leftMin": null,
+            "rightLogBase": 1,
+            "rightMax": null,
+            "rightMin": null,
+            "threshold1": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2": null,
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "id": 3,
+          "interval": ">60s",
+          "legend": {
+            "alignAsTable": true,
+            "avg": true,
+            "current": false,
+            "hideEmpty": false,
+            "max": true,
+            "min": false,
+            "rightSide": true,
+            "show": true,
+            "total": true,
+            "values": true
+          },
+          "lines": true,
+          "linewidth": 2,
+          "links": [],
+          "nullPointMode": "null as zero",
+          "percentage": false,
+          "pointradius": 5,
+          "points": false,
+          "renderer": "flot",
+          "seriesOverrides": [
+            {}
+          ],
+          "span": 12,
+          "stack": false,
+          "steppedLine": true,
+          "targets": [
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "$interval",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/CacheInvalidations/constant' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "A",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/CacheInvalidations/constant"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/CacheInvalidations/method' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "B",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/CacheInvalidations/method"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/GC/heap_free' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "C",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/GC/heap_free"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/GC/heap_live' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "D",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/GC/heap_live"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/GC/major_gc_count' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "E",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/GC/major_gc_count"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/GC/minor_gc_count' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "F",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/GC/minor_gc_count"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/GC/runs' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "G",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/GC/runs"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/GC/total_allocated_object' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "H",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/GC/total_allocated_object"
+                }
+              ]
+            },
+            {
+              "fields": [
+                {
+                  "func": "mean",
+                  "name": "value"
+                }
+              ],
+              "groupBy": [
+                {
+                  "interval": "auto",
+                  "type": "time"
+                },
+                {
+                  "key": "metric_name",
+                  "type": "tag"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'RubyVM/Threads/all' AND $timeFilter GROUP BY time($interval), \"metric_name\"",
+              "refId": "I",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "RubyVM/Threads/all"
+                }
+              ]
+            }
+          ],
+          "timeFrom": null,
+          "timeShift": null,
+          "title": "Garbage Collector",
+          "tooltip": {
+            "shared": true,
+            "value_type": "cumulative"
+          },
+          "type": "graph",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ]
+        }
+      ],
+      "title": "New row"
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "Transactions count",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 4,
+          "datasource": "CRM_collector",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "rightLogBase": 1,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "null as zero",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": true
+          },
+          "timeFrom": null,
+          "timeShift": null,
+          "targets": [
+            {
+              "refId": "A",
+              "tags": [],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "mduration",
+                  "func": "count"
+                }
+              ],
+              "measurement": "analytics_data",
+              "query": "SELECT count(\"mduration\") AS \"mduration\" FROM \"analytics_data\" WHERE $timeFilter GROUP BY time($interval)"
+            },
+            {
+              "refId": "B",
+              "tags": [],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "message"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "message",
+                  "func": "count"
+                }
+              ],
+              "measurement": "errors_data",
+              "query": "SELECT count(\"message\") AS \"message\" FROM \"errors_data\" WHERE $timeFilter GROUP BY time($interval), \"message\""
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "Apdex",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 5,
+          "datasource": "CRM_collector",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "rightLogBase": 1,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": false,
+            "min": false,
+            "max": false,
+            "current": false,
+            "total": false,
+            "avg": false
+          },
+          "nullPointMode": "null as zero",
+          "steppedLine": true,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": true
+          },
+          "timeFrom": null,
+          "timeShift": null,
+          "targets": [
+            {
+              "refId": "A",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "B",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "ApdexAll"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'ApdexAll' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": []
+        }
+      ]
+    },
+    {
+      "title": "New row",
+      "height": "250px",
+      "editable": true,
+      "collapse": false,
+      "panels": [
+        {
+          "title": "Apdex per transaction",
+          "error": false,
+          "span": 12,
+          "editable": true,
+          "type": "graph",
+          "id": 6,
+          "datasource": "CRM_collector",
+          "renderer": "flot",
+          "x-axis": true,
+          "y-axis": true,
+          "y_formats": [
+            "short",
+            "short"
+          ],
+          "grid": {
+            "leftLogBase": 1,
+            "leftMax": null,
+            "rightMax": null,
+            "leftMin": null,
+            "rightMin": null,
+            "rightLogBase": 1,
+            "threshold1": null,
+            "threshold2": null,
+            "threshold1Color": "rgba(216, 200, 27, 0.27)",
+            "threshold2Color": "rgba(234, 112, 112, 0.22)"
+          },
+          "lines": true,
+          "fill": 1,
+          "linewidth": 2,
+          "points": false,
+          "pointradius": 5,
+          "bars": false,
+          "stack": false,
+          "percentage": false,
+          "legend": {
+            "show": true,
+            "values": true,
+            "min": true,
+            "max": true,
+            "current": false,
+            "total": true,
+            "avg": true,
+            "alignAsTable": true,
+            "rightSide": true
+          },
+          "nullPointMode": "null as zero",
+          "steppedLine": false,
+          "tooltip": {
+            "value_type": "cumulative",
+            "shared": true
+          },
+          "timeFrom": null,
+          "timeShift": null,
+          "targets": [
+            {
+              "refId": "A",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/businesses/index"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/businesses/index' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "B",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/businesses/show"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/businesses/show' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "C",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/employees/index"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/employees/index' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "D",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/people/index"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/people/index' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "E",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/people/show"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/people/show' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "F",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/received_messages/index"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/received_messages/index' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "G",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/sent_messages/index"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/sent_messages/index' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "H",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v1/teams/index"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v1/teams/index' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "I",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/api/v2/messages_counters/index"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/api/v2/messages_counters/index' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            },
+            {
+              "refId": "J",
+              "tags": [
+                {
+                  "key": "metric_name",
+                  "operator": "=",
+                  "value": "Apdex/home/show"
+                }
+              ],
+              "groupBy": [
+                {
+                  "type": "time",
+                  "interval": "auto"
+                },
+                {
+                  "type": "tag",
+                  "key": "metric_name"
+                }
+              ],
+              "fields": [
+                {
+                  "name": "value",
+                  "func": "mean"
+                }
+              ],
+              "measurement": "metric_data",
+              "query": "SELECT mean(\"value\") AS \"value\" FROM \"metric_data\" WHERE \"metric_name\" = 'Apdex/home/show' AND $timeFilter GROUP BY time($interval), \"metric_name\""
+            }
+          ],
+          "aliasColors": {},
+          "seriesOverrides": [],
+          "links": [],
+          "interval": ">60s"
+        }
+      ]
+    }
+  ],
+  "time": {
+    "from": "2015-11-15T09:27:35.336Z",
+    "to": "2015-11-15T12:11:16.000Z"
+  },
+  "timepicker": {
+    "refresh_intervals": [
+      "5s",
+      "10s",
+      "30s",
+      "1m",
+      "5m",
+      "15m",
+      "30m",
+      "1h",
+      "2h",
+      "1d"
+    ],
+    "time_options": [
+      "5m",
+      "15m",
+      "1h",
+      "6h",
+      "12h",
+      "24h",
+      "2d",
+      "7d",
+      "30d"
+    ]
+  },
+  "templating": {
+    "list": []
+  },
+  "annotations": {
+    "list": []
+  },
+  "refresh": false,
+  "schemaVersion": 7,
+  "version": 20,
+  "links": []
+}

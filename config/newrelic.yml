@@ -148,6 +148,18 @@ development:
   # Do not use for production or load testing.
   developer_mode: true
 
+  # belove configuration for Grafana/influxDB
+development:
+  <<: *default_settings
+  ssl: false
+  app_name: crm (Development)
+  monitor_mode: true
+  host: localhost
+  port: 4567
+  api_host: localhost
+  api_port: 4567
+  developer_mode: true
+
 test:
   <<: *default_settings
   # It doesn't make sense to report to New Relic from automated test runs.
@@ -159,3 +171,10 @@ staging:
 
 production:
   <<: *default_settings
+  ssl: false
+  app_name: crm (Production)
+  monitor_mode: true
+  host: localhost
+  port: 4567
+  api_host: localhost
+  api_port: 4567
