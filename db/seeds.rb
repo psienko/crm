@@ -57,12 +57,12 @@ team_name_list.each_with_index do |name, i|
     )
 end
 
-20.times do
+50.times do |idx|
   date_of_birth = Faker::Date.birthday
   person = Person.create!(
     firstname: Faker::Name.first_name,
     lastname: Faker::Name.last_name,
-    email: Faker::Internet.email,
+    email: Faker::Internet.email.gsub('@', "#{idx}@"),
     pesel: Rpg::Pesel.new(gender: :male, date: date_of_birth).generate,
     phone_number: Faker::PhoneNumber.phone_number,
     city: Faker::Address.city,
