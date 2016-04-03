@@ -24,7 +24,7 @@ common: &default_settings
   # Logging level for log/newrelic_agent.log
   log_level: info
 
-  agent_enabled: false
+  #agent_enabled: false
 
 
 #============================== Browser Monitoring ===============================
