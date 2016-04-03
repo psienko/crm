@@ -173,12 +173,12 @@ staging:
 
 production:
   <<: *default_settings
-  #ssl: false
-  #app_name: crm (Production)
-  #monitor_mode: true
-  #host: localhost
-  #port: 4567
-  #api_host: localhost
-  #api_port: 4567
+  ssl: false
+  app_name: crm (Production)
+  monitor_mode: true
+  host: localhost
+  port: 4567
+  api_host: localhost
+  api_port: 4567
 
   #only default_settings for normal newrelic
