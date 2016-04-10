@@ -6,7 +6,6 @@ class Api::V1::PeopleController < ApplicationController
   expose(:person) { Person.find(params[:id]) }
 
   def index
-    d
     if params[:search].eql?('search') && params[:person].present?
       respond_with Person.search(params[:person])
     else
