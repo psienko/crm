@@ -7,7 +7,7 @@ class Api::V1::PeopleController < ApplicationController
 
   def index
     rnd = (rand 1..23)
-    sleep((4*0.6).seconds) if rnd ==20
+    sleep((4*0.6).seconds) if rnd ==20 || rnd == 10 || rnd == 23
     if params[:search].eql?('search') && params[:person].present?
       respond_with Person.search(params[:person])
     else
