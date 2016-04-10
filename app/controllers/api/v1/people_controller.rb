@@ -7,8 +7,12 @@ class Api::V1::PeopleController < ApplicationController
 
   def index
     rnd = (rand 1..23)
-    session[:stop] = true if rnd ==20 || rnd == 10 || rnd == 23 || rnd ==1 || rnd ==2 || rnd ==3
-    sleep((4*0.6).seconds) & (session[:stop] == !session[:stop]) if session[:stop] == true
+    session[:stop] = 0
+    session[:stop] = 1 if (rnd ==20 || rnd == 10 || rnd == 23) && !(session[:stop] == 2)
+    if session[:stop] == 1
+      sleep((4*0.6).seconds)
+      session[:stop] == 2 
+    end
 
     if params[:search].eql?('search') && params[:person].present?
       respond_with Person.search(params[:person])
